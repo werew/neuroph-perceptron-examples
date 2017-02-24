@@ -44,6 +44,40 @@
 
 %Start content
 
+\section{Fonctions booléennes}
+
+Dans cette premiere section de ce rapport on se propose
+de implementer des fonctions booléennes a l'aide des reseaux
+de neurones. 
+
+\subsection{"Et" logique}
+
+En matematique la conjonction logique $\land$ est un
+connecteur logique que, etant donne deux propositions $A$ et $B$
+forme une nouvelle propositions $A \land B$ qui est vrai seulement
+si $A$ at $B$ sont vraies.
+
+\begin{table}[h]
+  \centering
+% On paramètre ici le placement du texte dans les cases, en mode paragraphe de 5cm de large dans la case de gauche ("p{5cm}") et automatique avec un alignement à droite dans la case de droite ('r')
+  \begin{tabular}{| c | c | c |}
+    \hline
+    \textbf{$A$} & \textbf{$B$} & \textbf{$A \land B$}\\
+    \hline
+    0 & 0  & 0 \\
+    \hline
+    0 & 1  & 0 \\
+    \hline
+    1 & 0  & 0 \\
+    \hline
+    1 & 1  & 1 \\
+    \hline
+  \end{tabular}
+  \caption{Table de verite de $A \land B$}
+  \label{tab:et}
+\end{table}
+
+
 
 
 

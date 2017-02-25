@@ -55,7 +55,7 @@ de neurones.
 En matematique la conjonction logique $\land$ est un
 connecteur logique que, etant donne deux propositions $A$ et $B$
 forme une nouvelle propositions $A \land B$ qui est vrai seulement
-si $A$ at $B$ sont vraies.
+si $A$ et $B$ sont vraies.
 
 \begin{table}[h]
   \centering
@@ -76,6 +76,40 @@ si $A$ at $B$ sont vraies.
   \caption{Table de verite de $A \land B$}
   \label{tab:et}
 \end{table}
+
+
+
+
+\subsection{Un perceptron pour $\land$} 
+
+Est it possible d'utiliser un perceptron pour apprendre la fonction logique
+"et"? Bien sur, en effet meme un perceptron mono couche est sufficent pour
+obtenir cet resultat.
+
+Le perceptron peut etre utilise comme un classifieur linéaire, cad. l'algorithme du
+perceptron perment de reconnaitre et donc classifier des donnes (ou points)
+linearement separables. 
+
+Un ensemble de points dans le plan caracterise par deux sous-classes disjointes
+de points, est dit linearement separable si il existe une droite qui separe
+completement les deux sous-classes.
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=10cm]{./pics/and/and.eps}
+\caption{La fonction logique "et" est linearement separable}
+\label{fig:and}
+\end{figure}
+
+
+Comme montre la figure \ref{fig:and} c'est le cas de la fonction "et".  Etant
+donne que tout ensemble linéairement séparable peut être discriminé par un
+perceptron on est sur de pouvoir trouver un perceptron qui engendre la 
+fonction booléenne $\land$.
+
+
+
 
 
 

@@ -84,15 +84,19 @@ si $A$ et $B$ sont vraies.
 
 Est it possible d'utiliser un perceptron pour apprendre la fonction logique
 "et"? Bien sur, en effet meme un perceptron mono couche est sufficent pour
-obtenir cet resultat.
+obtenir cet resultat.\\
 
 Le perceptron peut etre utilise comme un classifieur linéaire, cad. l'algorithme du
 perceptron perment de reconnaitre et donc classifier des donnes (ou points)
-linearement separables. 
+linearement separables.\\
 
 Un ensemble de points dans le plan caracterise par deux sous-classes disjointes
 de points, est dit linearement separable si il existe une droite qui separe
-completement les deux sous-classes.
+completement les deux sous-classes.\\
+
+Dans trois dimension un ensemble est linearement separable si il existe un plan
+qui separe les deux classes. Dans quatre ou plus dimensions on ne parlera plus de
+plan mais de hyperplan.
 
 
 \begin{figure}[h]
@@ -103,10 +107,10 @@ completement les deux sous-classes.
 \end{figure}
 
 
-Comme montre la figure \ref{fig:and} c'est le cas de la fonction "et".  Etant
-donne que tout ensemble linéairement séparable peut être discriminé par un
-perceptron on est sur de pouvoir trouver un perceptron qui engendre la 
-fonction booléenne $\land$.
+Comme montre la figure \ref{fig:and} la fonction "et" est bien linearement
+separable.  Etant donne que tout ensemble linéairement séparable peut être
+discriminé par un perceptron on est sur de pouvoir trouver un perceptron qui
+engendre la fonction booléenne $\land$.
 
 
 

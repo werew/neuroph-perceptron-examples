@@ -59,7 +59,6 @@ si $A$ et $B$ sont vraies.
 
 \begin{table}[h]
   \centering
-% On paramètre ici le placement du texte dans les cases, en mode paragraphe de 5cm de large dans la case de gauche ("p{5cm}") et automatique avec un alignement à droite dans la case de droite ('r')
   \begin{tabular}{| c | c | c |}
     \hline
     \textbf{$A$} & \textbf{$B$} & \textbf{$A \land B$}\\
@@ -108,13 +107,108 @@ plan mais de hyperplan.
 
 
 Comme montre la figure \ref{fig:and} la fonction "et" est bien linearement
-separable.  Etant donne que tout ensemble linéairement séparable peut être
+separable. Etant donne que tout ensemble linéairement séparable peut être
 discriminé par un perceptron on est sur de pouvoir trouver un perceptron qui
-engendre la fonction booléenne $\land$.
+engendre la fonction booléenne $\land$.\\
+
+Le perceptron cree avec Neuroph que on utilisera pour cette fonction 
+est vraiment tres simple et est inllustre dans la figure \ref{fig:per_and}.
+Le data set pour l'apprentissage contiens les meme valeurs de la table
+\ref{tab:et}.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=4.5cm,height=7cm]{./pics/perc_and.eps}
+\caption{Perceptron pour la fonction "et"}
+\label{fig:per_and}
+\end{figure}
+
+Pendant l'entrainement du perceptron (dont les poids ont ete initialize avant
+aleatoireament) avec des avec un taux d'apprentissage de 0.2 (valeur par
+default) on obtient une courbe d'apprentissage qui converge toujours a
+zero. La forme de celle-ci dependra essentialement des valeurs initiales des
+poids. 
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=12cm,height=9cm]{./pics/and_error1.eps}
+\caption{Exemple de courbe d'apprentissage pour la fonction "et"}
+\label{fig:and_err}
+\end{figure}
+
+La figure \ref{fig:and_err} montre un exemple de courbe d'apprentissage
+obtenu avec les valeurs susmentionne.\\
+
+L'apprentissage peut etre pense comme le processus pendat le quelle la
+reseau de neurons cherche de s'approcher le plus possible au plus petit
+taux d'erreur.\\
+
+En effet, la meilleure configuration (valeurs des poids, biais, etc.) pour
+notre reseau de neurons corresponde au point de minimum globale de la fonction
+$E$ qui associe a toute configuration de notre reseau de neurons un cout $C$.\\
+
+$E$ mesure la difference entre le valeur attendu et celui produit et est
+souvent calcule comme etant $E(y,y') = \tfrac{1}{2} \lVert y-y'\rVert^2$ ou $y$ est
+le valeur attendu et $y'$ est le valeur produit par la reseau.
+Mais pourquoi pas plus simplement $\lVert y-y'\rVert$? 
+En effet, la choix d'utiliser une fonction quadratique n'est pas casuelle. 
+Un des problemes plus importantes dans l'apprentissage supervisee d'une reseau
+de neurones qui se base sur l'algorithme du gradient (gradient descent) est
+celui pose par les points de minimum locales de $E$. Le fait que $E$ soit
+quadratique permet d'exploiter la convexite des fonctions quadratique pour
+minimizer ce probleme. Le $\tfrac{1}{2}$ permet de simplifier la fonction lors
+de sa derivation.\\
+
+Comme attendu, dans notre cas le perceptron n'a aucun probleme a trouver le
+minimum globale de $E$ mais dans ce premiere exemple on se contente d'entrainer la
+reseau de neurons jusq'a obtenir un taux d'erreur moyen de seulement 1\%. La
+figure \ref{fig:andtest1} montre les resultat de l'entrainement:
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=7.3cm,height=2.3cm]{./pics/andtest1.eps}
+\caption{Test d'erreur apres l'apprentissage de la fonction "et"}
+\label{fig:andtest1}
+\end{figure}
+
+En utilisant la definition de $E$ on peut verifier que le cout
+moyen est bien tres proche de $0.01$:
+
+\begin{equation*}
+  \begin{aligned}
+  \tfrac{1}{4}\times(E(0,0.0061)+E(0,0.1401)+E(0,0.1445)+E(1,0.8185))\\
+  = \tfrac{1}{4}\times(\tfrac{0.0061^2}{2}+\tfrac{0.1401^2}{2}+\tfrac{0.1445^2}{2}+\tfrac{0.1815^2}{2}) =
+  0.009185965
+  \end{aligned}
+\end{equation*}
+
+Le resultat obtenu est tres proche de celui souhaite, en effet il suffit de 
+introduire une seuille pour obtenir un output qui soit un 0 ou un 1.
+Dans Neuroph ca se traduit par utiliset la fonction d'activation step pour le
+neuron d'output.
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=12cm,height=9cm]{./pics/and_error2.eps}
+\caption{Courbe d'apprentissage de "et" en utilisant la fonction step}
+\label{fig:and_err}
+\end{figure}
 
 
 
+Cette technique nous perment d'obtenir une sortie parfaite qui ne presente
+aucun taux d'erreur.
 
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=7.3cm,height=2.3cm]{./pics/andtest2.eps}
+\caption{Test d'erreur apres l'apprentissage de la fonction "et"}
+\label{fig:andtest2}
+\end{figure}
 
 
 

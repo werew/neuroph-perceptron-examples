@@ -79,7 +79,7 @@ si $A$ et $B$ sont vraies.
 
 
 
-\subsection{Un perceptron pour $\land$} 
+\subsubsection{Un perceptron pour $\land$} 
 
 Est it possible d'utiliser un perceptron pour apprendre la fonction logique
 "et"? Bien sur, en effet meme un perceptron mono couche est sufficent pour
@@ -211,8 +211,43 @@ aucun taux d'erreur.
 \end{figure}
 
 
+\subsubsection{Differents pas d'apprentissage}
+
+Le pas d'apprentissage determine la vitesse (pas) avec la quelle notre reseau
+cherche a s'approcher au point d'erreur minimum. 
+A chaque epoque ({\it batch learning}) ou a chaque iteration ({\it incremental
+learning}) les poids de la reseau sont mise a jour en utilisant une combinaison du
+pas d'apprentissage et le gradient $\nabla E$ qui indique la direction du taux
+d'accroissement le plus élevé de $E$ et sa pente.\\
+
+Le pas d'apprentissage joue un role tres importante dans la recherche du
+minimum globale d'une fonction. 
+Si un pas d'apprentissage trop grand risque de ne pas atteindre le minimum globale
+un pas trop petit augment le temps necessaire a entrainer le reseau et risque de
+se bloquer dans un point de minimum locale.\\
+
+Dans notre cas le changement du pas d'apprentissage n'a aucun effect que celui 
+de changer la vitesse d'apprentissage.
 
 
+\begin{figure}[h]
+\centering
+\includegraphics[width=12cm,height=9cm]{./pics/and_error3.eps}
+\caption{Apprentissage fonction "et" avec un pas de 0.1}
+\label{fig:and_err3}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=12cm,height=9cm]{./pics/and_error4.eps}
+\caption{Apprentissage fonction "et" avec un pas de 1}
+\label{fig:and_err4}
+\end{figure}
+
+Avec un pas de 1 (figure \ref{fig:and_err4}) l'erreur totale du perceptron
+tombe au-dessus de 0.01 apres seulement 17 iterations, par contre avec 
+un pas de 0.1 le nombre d'iterations necessaires pour obtenir le meme
+resultat monte a plus de 155 iterations (figure \ref{fig:and_err3}).
 
 
 %End content

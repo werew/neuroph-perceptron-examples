@@ -275,6 +275,44 @@ est illustre par la table \ref{tab:eq}.
 \end{table}
 
 \subsubsection{Un perceptron pour $\Leftrightarrow$}
+Comme pour l'exemple précédent nous allons essayer de faire apprendre
+l'équivalence à un perceptron monocouche.
+
+%TODO includegraphics{perceptron multicouche}
+
+Entrainons ce perceptron avec le data set.
+
+%TODO includegrapics{resultat valeur par defaut}
+
+Nous pouvons abserver que la courbe semble osciller indéfiniment,
+et il n'y a clairement pas de convergence avec un perceptron multicouche
+et les paramètres par défauts.
+Nous pouvons essayer de changer le pas d'apprentissage pour essayer d'avoir
+une convergence.
+
+%TODO includegraphcis{resultat avec pas d'apprentissage different}
+
+Nous pouvons encore observer que cela ne permet de conduire à une convergence.
+
+Le perceptron monocouche ne semble donc pas adapté pour l'apprentissage de la fonction
+d'équivalence. En effet, nous pouvons remarquer que l'équivalence n'est pas une fonction
+linéairement séparable.
+
+%TODO includegraphics{fonction non linéaire}
+
+Ceci explique pourquoi un perceptron monocouche ne peut pas apprendre de manière correcte
+la fonction d'équivalence.
+
+Pour permettre l'apprentissage de l'équivalence par un perceptron, il faut donc que
+celui-ci soit un perceptron multicouche.
+Nous allons donc créer un perceptron multicouche qui contiendra une couche caché de
+3 neurones.
+
+Testons ce perceptron avec le data set et les paramètre par défaut.
+
+%TODO includegraphics{resultat multicouche defaut}
+
+
 
 \iffalse
 % TODO %

@@ -249,6 +249,60 @@ tombe au-dessus de 0.01 apres seulement 17 iterations, par contre avec
 un pas de 0.1 le nombre d'iterations necessaires pour obtenir le meme
 resultat monte a plus de 155 iterations (figure \ref{fig:anderr3}).
 
+\subsection{Equivalence logique}
+En matematique deux propositions sont dites equivalentes si l'un implique
+l'autre: $a \Leftrightarrow b$. La table de verite de l'equivalence logique
+est illustre par la table \ref{tab:eq}.
+
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{| c | c | c |}
+    \hline
+    \textbf{$a$} & \textbf{$b$} & \textbf{$a \Leftrightarrow b$}\\
+    \hline
+    0 & 0  & 1 \\
+    \hline
+    0 & 1  & 0 \\
+    \hline
+    1 & 0  & 0 \\
+    \hline
+    1 & 1  & 1 \\
+    \hline
+  \end{tabular}
+  \caption{Table de verite de $a \Leftrightarrow b$}
+  \label{tab:eq}
+\end{table}
+
+\subsubsection{Un perceptron pour $\Leftrightarrow$}
+
+\iffalse
+% TODO %
+1) En suivant l'exemple precedent proposer un perceptron mono couche pour
+   l'equivalence logique 
+    - Montrer la courbe d'apprentissage:
+    - Expliquer pourquoi la courbe d'apprentissage ne converge pas
+        --> Parceque l'eq. n'est pas linearement separable
+    - Montrer que avec un pas d'apprentissage different le resultat
+      ne change pas (essayer avec 0.1 et 1)
+2) Proposer un perceptron multi-couches
+    - Montrer que l'apprentissage converge
+3) Montrer les resultats en changeant:
+    - pas d'apprentissage
+    - fonction d'activation
+    - nombre de neurones
+    - nombre de couches 
+    ==> faire beaucoup de screenshots de Neuroph :)
+        (ex. resultats des test, interface 
+NB:
+  - pas besoin de screenshot pour la courbe d'apprentissage
+    on peut la sauvgarder directement
+  - pour convertir un image au format eps (pour latex) il suffit
+    simplement `convert image.truc image.eps` sur bash
+  - si il y a besoin de generer des images avec gnuplot 
+    je peut me n'occuper
+\fi
+
 
 %End content
 

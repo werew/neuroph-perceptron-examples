@@ -276,14 +276,15 @@ est illustre par la table \ref{tab:eq}.
 \end{table}
 
 \subsubsection{Un perceptron pour $\Leftrightarrow$}
+
 Comme pour l'exemple précédent nous allons essayer de faire apprendre
 l'équivalence à un perceptron monocouche.
 
-%TODO includegraphics{perceptron multicouche}
+\includegraphics[width=5cm,height=7cm]{./pics/eq/perceptron_mono.eps}
 
 Entrainons ce perceptron avec le data set.
 
-%TODO includegrapics{resultat valeur par defaut}
+\includegraphics[width=12cm,height=9cm]{./pics/eq/mono_eq_def.eps}
 
 Nous pouvons abserver que la courbe semble osciller indéfiniment,
 et il n'y a clairement pas de convergence avec un perceptron multicouche
@@ -291,7 +292,9 @@ et les paramètres par défauts.
 Nous pouvons essayer de changer le pas d'apprentissage pour essayer d'avoir
 une convergence.
 
-%TODO includegraphcis{resultat avec pas d'apprentissage different}
+\includegraphics[width=6cm,height=3cm]{./pics/eq/mono_eq_0.1.eps}
+\includegraphics[width=6cm,height=3cm]{./pics/eq/mono_eq_0.01.eps}
+\includegraphics[width=6cm,height=3cm]{./pics/eq/mono_eq_0.001.eps}
 
 Nous pouvons encore observer que cela ne permet de conduire à une convergence.
 

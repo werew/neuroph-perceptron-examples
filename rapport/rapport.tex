@@ -4,6 +4,7 @@
 \usepackage[T1]{fontenc}
 \usepackage{emptypage}
 \usepackage{amsmath}
+\usepackage{amssymb}
 
 % Utilisation d'url
 \usepackage{url}
@@ -342,7 +343,48 @@ NB:
 \fi
 
 
-\section{Apprentissage d'une fonction}
+\section{Apprentissage de la fonction: $f(x) = x^2$}
+
+Il est le moment de tester si un perceptron (mono-couche ou multi-couches) est
+capable de apprendre une fonction un peu plus complexe que celle qu'on a vu avant, 
+la fonction carre: $f(x) = x^2$ !\\
+
+Plusieurs difference par rapport aux fonction precedentes sautent aux yeux.
+Si avant le domaine de notre fonctions binaire etait reduit a ${0,1}$, cette
+fois nous sommes confrontes a une fonction continue definie dans tout $\mathbb{R}$.
+%TODO if there is time: can we implement a NN in R? %
+Un autre difference est cela lie aux type et nombre d'inputs, et change
+considerablement le paradigme utilise par notre reseau:\\
+
+Une concept qu'on a pas introduit jusq'a maintenant est l'existence de plusieur
+types de donnes pour l'apprentissage et autant de paradigmes s'apprentissage qui en
+decoulent. Les deux principales types de donnes avec le quelle on doit faire
+face sont:
+
+\begin{itemize}
+\item Des variables catégorielles (dit aussi qualitative) - ou il y a generalement
+      un ou plusieurs cases qui peuvent etre groupe en differents categories 
+     (par example: haut, bas ou rouge, vert, bleu, etc.)
+\item Des donne quantitatives qui se presente comme mesuration numeriques d'un attribut
+\end{itemize}
+
+On appelle les types d'apprentissage utilise pour reconnaitre et classifier des donnes
+appartenant a la premiere famille "classification". De l'autre cote l'apprentissage
+supervise avec des donnes quantitatives est appelle "regression".\cite{kindsNN}\\
+
+Pour recapituler: la régression consiste à estimer ou à prédire une réponse,
+la classification est l'identification de l'appartenance a un groupe.\\
+
+Dans notre example precedents ($^$ et $\Leftrightarrow$) on a simplement traite des
+classification binaires, cette fois on est confronte avec des donnes de type 
+quantitative.
+
+Un perceptron n'est peut etre pas le moyen plus efficace pour calculer cette 
+fonction, mais, peut il le faire? Le theoreme de ... nous dis que...
+On peut commencer a tester pour (N neurons) (Intervalle)
+
+--------------
+
 Pour l'apprentissage de la fonction carré nous avons décidé d'utiliser un perceptron
 multi-couche car %TODO
 Nous avons donc créé un perceptron avec une couche caché composé de %TODO 6 neurones.
@@ -354,7 +396,7 @@ normalisé notre data set.
   \centering
   \begin{tabular}{| c | c |}
     \hline
-    \textbf{$x$} & \textbf{$x^2$}\\
+    \textbf{$x$} & \textbf{$f(x)$}\\
     \hline
     0.1 & 0.01 \\
     \hline

@@ -250,6 +250,7 @@ tombe au-dessus de 0.01 apres seulement 17 iterations, par contre avec
 un pas de 0.1 le nombre d'iterations necessaires pour obtenir le meme
 resultat monte a plus de 155 iterations (figure \ref{fig:anderr3}).
 
+
 \subsection{Equivalence logique}
 En matematique deux propositions sont dites equivalentes si l'un implique
 l'autre: $a \Leftrightarrow b$. La table de verite de l'equivalence logique
@@ -276,24 +277,29 @@ est illustre par la table \ref{tab:eq}.
 \end{table}
 
 \subsubsection{Un perceptron pour $\Leftrightarrow$}
-Comme pour l'exemple précédent nous allons essayer de faire apprendre
-l'équivalence à un perceptron monocouche.
 
-%TODO includegraphics{perceptron multicouche}
+Comme pour la fonction booléenne "et" précédente nous allons essayer de faire apprendre
+l'équivalence à un perceptron monocouche. Nous avons donc créé un perceptron monocouche
+avec deux inputs et un output
 
-Entrainons ce perceptron avec le data set.
+\includegraphics[width=5cm,height=7cm]{./pics/eq/perceptron_mono.eps}
 
-%TODO includegrapics{resultat valeur par defaut}
+Entrainons ce perceptron avec le data set sur 1000 itérations.
 
-Nous pouvons abserver que la courbe semble osciller indéfiniment,
-et il n'y a clairement pas de convergence avec un perceptron multicouche
-et les paramètres par défauts.
-Nous pouvons essayer de changer le pas d'apprentissage pour essayer d'avoir
+\includegraphics[width=12cm,height=9cm]{./pics/eq/mono_eq_def.eps}
+
+Nous pouvons observer qu'il ne semble pas avoir de convergence avec ce perceptron
+en laissant les paramètre par défaut.
+Nous pouvons changer le pas d'apprentissage pour essayer d'avoir
 une convergence.
 
-%TODO includegraphcis{resultat avec pas d'apprentissage different}
+Voyons se que cela donne avec des pas d'apprentissage de respectivement 0.1 , 0.01 , 0.001.
 
-Nous pouvons encore observer que cela ne permet de conduire à une convergence.
+\includegraphics[width=6cm,height=3cm]{./pics/eq/mono_eq_0.1.eps}
+\includegraphics[width=6cm,height=3cm]{./pics/eq/mono_eq_0.01.eps}
+\includegraphics[width=6cm,height=3cm]{./pics/eq/mono_eq_0.001.eps}
+
+Nous pouvons encore observer que cela ne permet pas de conduire à une convergence.
 
 Le perceptron monocouche ne semble donc pas adapté pour l'apprentissage de la fonction
 d'équivalence. En effet, nous pouvons remarquer que l'équivalence n'est pas une fonction
@@ -307,9 +313,33 @@ la fonction d'équivalence.
 Pour permettre l'apprentissage de l'équivalence par un perceptron, il faut donc que
 celui-ci soit un perceptron multicouche.
 Nous allons donc créer un perceptron multicouche qui contiendra une couche caché de
-3 neurones.
+3 neurones, et avec toujours 2 inputs et un un output.
+Cela nous donne le perceptron ci-dessous:
+
+\includegraphics[width=5cm,height=7cm]{./pics/eq/perceptron_multi.eps}
 
 Testons ce perceptron avec le data set et les paramètre par défaut.
+
+\includegraphics[width=12cm,height=9cm]{./pics/eq/multi_eq_def.eps}
+
+Il semble y avoir une convergence vers 3900 itérations.
+
+Nous allons maintenant voir l'influence des paramètre sur la courbe. Voyons tout d'abord
+les effets d'un changement de pas d'apprentissage.
+
+Les pas d'apprentissages sont respectivement de 0.1 , 0.5 , 1.
+
+\includegraphics[width=6cm,height=3cm]{./pics/eq/multi_eq_0.1.eps}
+\includegraphics[width=6cm,height=3cm]{./pics/eq/multi_eq_0.5.eps}
+\includegraphics[width=6cm,height=3cm]{./pics/eq/multi_eq_1.eps}
+
+Changeons à présent le nombre de neurone dans la couche caché.
+
+
+\includegraphics[width=6cm,height=3cm]{./pics/eq/multi-5_eq_def.eps}
+\includegraphics[width=6cm,height=3cm]{./pics/eq/multi-10_eq_def.eps}
+\includegraphics[width=6cm,height=3cm]{./pics/eq/multi-20_eq_def.eps}
+
 
 %TODO includegraphics{resultat multicouche defaut}
 

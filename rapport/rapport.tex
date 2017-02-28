@@ -375,22 +375,39 @@ supervise avec des donnes quantitatives est appelle "regression".\cite{kindsNN}\
 Pour recapituler: la régression consiste à estimer ou à prédire une réponse,
 la classification est l'identification de l'appartenance a un groupe.\\
 
-Dans notre example precedents ($^$ et $\Leftrightarrow$) on a simplement traite des
-classification binaires, cette fois on est confronte avec des donnes de type 
-quantitative.
+Dans notre example precedents ("et" logique et equivalence) on a simplement
+traite des classification binaires, cette fois on est confronte avec des donnes
+de type quantitative.
 
-Un perceptron n'est peut etre pas le moyen plus efficace pour calculer cette 
-fonction, mais, peut il le faire? Le theoreme de ... nous dis que...
-On peut commencer a tester pour (N neurons) (Intervalle)
 
---------------
+\subsection{Un perceptron pour la fonction $f(x) = x^2$}
+Un perceptron n'est pas peut etre le moyen plus efficace pour calculer cette 
+fonction, mais, peut il le faire?\\
 
-Pour l'apprentissage de la fonction carré nous avons décidé d'utiliser un perceptron
-multi-couche car %TODO
-Nous avons donc créé un perceptron avec une couche caché composé de %TODO 6 neurones.
-Pour entrainer notre perceptron nous avons tout d'abord utilisé un data set contenant
-les carrés pour de 1 jusqu'à 10. Pour avoir un data set compris entre 0 et 1 nous avons
-normalisé notre data set.
+Comme on l'a vu avant un perceptron mono-couche peut etre utilise sans aucun
+probleme pour distinguer des donnes linearement separables, mais il echoue 
+a reconnaitre des schema un petit peu plus complexes. Il n'est donc pas 
+probabilment adaptee a notre probleme.\\
+
+Le theoreme de l'approximation universelle (aussi connu comme theoreme de Cybenko) 
+nous dis que un perceptron multi-couches avec une seule couche cache (avec un nombre
+fini de neurons) peut approximer n'importe quelle fonction continue dans un 
+intervalle de $\mathbb{R}$.
+\footnote{
+La demostration mathematique de ce theoreme est assez longue et complexe. Un approche visuelle
+qui se preste a une demostration beaucoup plus intuive est propose at \cite{visuniprof}.
+}
+\cite{cybthm}
+
+Pour l'apprentissage de la fonction carré nous allor donc utiliser un perceptron
+multi-couche avec une seule couche cache et on cherchera de lui faire apprendre
+la fonction carre dans un intervalle de $\mathbb{R}$.
+
+Pour commencer on pourra utiliser un perceptron avec 3 neurons cache comme celui que
+on a utilise pour l'equivalence. Notre mission sera de approximer la fonction 
+carre dans l'intervalle $[1,100]$.
+
+----------------
 
 \begin{table}[h]
   \centering
@@ -398,30 +415,29 @@ normalisé notre data set.
     \hline
     \textbf{$x$} & \textbf{$f(x)$}\\
     \hline
-    0.1 & 0.01 \\
+    1 & 1 \\
     \hline
-    0.2 & 0.04 \\
+    2 & 4 \\
     \hline
-    0.3 & 0.09 \\
+    3 & 9 \\
     \hline
-    0.4 & 0.16 \\
+    ... & ... \\
     \hline
-    0.5 & 0.25 \\
-    \hline
-    0.6 & 0.36 \\
-    \hline
-    0.7 & 0.49 \\
-    \hline
-    0.8 & 0.64 \\
-    \hline
-    0.9 & 0.81 \\
-    \hline
-    1.0 & 1.0 \\
+    100 & 10000 \\
     \hline
   \end{tabular}
   \caption{Data set de la fonction carré}
   \label{tab:eq}
 \end{table}
+
+%
+
+--------------
+
+Pour entrainer notre perceptron nous avons tout d'abord utilisé un data set contenant
+les carrés pour de 1 jusqu'à 10. Pour avoir un data set compris entre 0 et 1 nous avons
+normalisé notre data set.
+
 
 \includegraphics[width=12cm,height=9cm]{./pics/fct/carre_10_norm_std.eps}
 

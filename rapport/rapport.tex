@@ -399,15 +399,25 @@ qui se preste a une demostration beaucoup plus intuive est propose at \cite{visu
 }
 \cite{cybthm}
 
-Pour l'apprentissage de la fonction carré nous allor donc utiliser un perceptron
+Pour l'apprentissage de la fonction carré nous donc utiliser un perceptron
 multi-couche avec une seule couche cache et on cherchera de lui faire apprendre
 la fonction carre dans un intervalle de $\mathbb{R}$.
 
-Pour commencer on pourra utiliser un perceptron avec 3 neurons cache comme celui que
-on a utilise pour l'equivalence. Notre mission sera de approximer la fonction 
-carre dans l'intervalle $[1,100]$.
+Pour commencer on pourra utiliser un perceptron avec 3 neurons cache comme
+celui que on a utilise precedement pour l'equivalence. Notre mission sera de
+approximer la fonction carre dans l'intervalle $[1,100]$.
 
-----------------
+Dans notre example chaque neuron de notre perceptron utilisera la fonction
+d'activation sigmoide pour cette raison on normalisera les inputs
+d'apprentissage pour les borner entre l'intervalle $[0,1]$ (codomaine de la
+fonction sigmoide).
+
+\subsubsection{3 neurons cache}
+
+Pour ne pas surcharger notre petite perceptron on pourrait commencer a tester
+ses capacites d'apprentissage avec un dataset de dimensions reduites (table
+\ref{tab:fqt1}). On rappelle que pour avoir un data set compris entre 0 et 1
+nous avons normalisé notre data set.
 
 \begin{table}[h]
   \centering
@@ -415,35 +425,44 @@ carre dans l'intervalle $[1,100]$.
     \hline
     \textbf{$x$} & \textbf{$f(x)$}\\
     \hline
-    1 & 1 \\
+    0 & 0 \\
     \hline
-    2 & 4 \\
+    10 & 100 \\
     \hline
-    3 & 9 \\
+    20 & 400 \\
     \hline
     ... & ... \\
     \hline
     100 & 10000 \\
     \hline
   \end{tabular}
-  \caption{Data set de la fonction carré}
-  \label{tab:eq}
+  \caption{Fontion carre: dataset 1}
+  \label{tab:fqt1}
 \end{table}
 
-%
+Avec les valeurs par defaut pour l'apprentissage notre reseau arrive a obtenir
+un bon taux d'erreur dans un temps raisonable comme montre par la figure
+\ref{fig:sqtest1}. Apres ce premier test notre reseau nous offre deja une
+appreciable approximation de la fonction carree (figure \ref{fig:chartsqtest1}).
 
---------------
+\begin{figure}[h]
+\centering
+\includegraphics[width=12cm,height=9cm]{./pics/sqtest1.eps}
+\caption{Apprentissage fonction carree: 3 neurons, dataset 1}
+\label{fig:sqtest1}
+\end{figure}
 
-Pour entrainer notre perceptron nous avons tout d'abord utilisé un data set contenant
-les carrés pour de 1 jusqu'à 10. Pour avoir un data set compris entre 0 et 1 nous avons
-normalisé notre data set.
+\begin{figure}[h]
+\centering
+\includegraphics[width=12cm,height=9cm]{./pics/chartsqtest1.eps}
+\caption{Resultats apprentissage: 3 neurons, dataset 1}
+\label{fig:chartsqtest1}
+\end{figure}
 
-
-\includegraphics[width=12cm,height=9cm]{./pics/fct/carre_10_norm_std.eps}
 
 
 %End content
-
+\clearpage
 \addcontentsline{toc}{section}{Références}
 \bibliographystyle{plain}
 \bibliography{rapport}

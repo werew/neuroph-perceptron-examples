@@ -250,7 +250,6 @@ tombe au-dessus de 0.01 apres seulement 17 iterations, par contre avec
 un pas de 0.1 le nombre d'iterations necessaires pour obtenir le meme
 resultat monte a plus de 155 iterations (figure \ref{fig:anderr3}).
 
-
 \subsection{Equivalence logique}
 En matematique deux propositions sont dites equivalentes si l'un implique
 l'autre: $a \Leftrightarrow b$. La table de verite de l'equivalence logique
@@ -277,29 +276,24 @@ est illustre par la table \ref{tab:eq}.
 \end{table}
 
 \subsubsection{Un perceptron pour $\Leftrightarrow$}
+Comme pour l'exemple précédent nous allons essayer de faire apprendre
+l'équivalence à un perceptron monocouche.
 
-Comme pour la fonction booléenne "et" précédente nous allons essayer de faire apprendre
-l'équivalence à un perceptron monocouche. Nous avons donc créé un perceptron monocouche
-avec deux inputs et un output
+%TODO includegraphics{perceptron multicouche}
 
-\includegraphics[width=5cm,height=7cm]{./pics/eq/perceptron_mono.eps}
+Entrainons ce perceptron avec le data set.
 
-Entrainons ce perceptron avec le data set sur 1000 itérations.
+%TODO includegrapics{resultat valeur par defaut}
 
-\includegraphics[width=12cm,height=9cm]{./pics/eq/mono_eq_def.eps}
-
-Nous pouvons observer qu'il ne semble pas avoir de convergence avec ce perceptron
-en laissant les paramètre par défaut.
-Nous pouvons changer le pas d'apprentissage pour essayer d'avoir
+Nous pouvons abserver que la courbe semble osciller indéfiniment,
+et il n'y a clairement pas de convergence avec un perceptron multicouche
+et les paramètres par défauts.
+Nous pouvons essayer de changer le pas d'apprentissage pour essayer d'avoir
 une convergence.
 
-Voyons se que cela donne avec des pas d'apprentissage de respectivement 0.1 , 0.01 , 0.001.
+%TODO includegraphcis{resultat avec pas d'apprentissage different}
 
-\includegraphics[width=6cm,height=3cm]{./pics/eq/mono_eq_0.1.eps}
-\includegraphics[width=6cm,height=3cm]{./pics/eq/mono_eq_0.01.eps}
-\includegraphics[width=6cm,height=3cm]{./pics/eq/mono_eq_0.001.eps}
-
-Nous pouvons encore observer que cela ne permet pas de conduire à une convergence.
+Nous pouvons encore observer que cela ne permet de conduire à une convergence.
 
 Le perceptron monocouche ne semble donc pas adapté pour l'apprentissage de la fonction
 d'équivalence. En effet, nous pouvons remarquer que l'équivalence n'est pas une fonction
@@ -313,33 +307,9 @@ la fonction d'équivalence.
 Pour permettre l'apprentissage de l'équivalence par un perceptron, il faut donc que
 celui-ci soit un perceptron multicouche.
 Nous allons donc créer un perceptron multicouche qui contiendra une couche caché de
-3 neurones, et avec toujours 2 inputs et un un output.
-Cela nous donne le perceptron ci-dessous:
-
-\includegraphics[width=5cm,height=7cm]{./pics/eq/perceptron_multi.eps}
+3 neurones.
 
 Testons ce perceptron avec le data set et les paramètre par défaut.
-
-\includegraphics[width=12cm,height=9cm]{./pics/eq/multi_eq_def.eps}
-
-Il semble y avoir une convergence vers 3900 itérations.
-
-Nous allons maintenant voir l'influence des paramètre sur la courbe. Voyons tout d'abord
-les effets d'un changement de pas d'apprentissage.
-
-Les pas d'apprentissages sont respectivement de 0.1 , 0.5 , 1.
-
-\includegraphics[width=6cm,height=3cm]{./pics/eq/multi_eq_0.1.eps}
-\includegraphics[width=6cm,height=3cm]{./pics/eq/multi_eq_0.5.eps}
-\includegraphics[width=6cm,height=3cm]{./pics/eq/multi_eq_1.eps}
-
-Changeons à présent le nombre de neurone dans la couche caché.
-
-
-\includegraphics[width=6cm,height=3cm]{./pics/eq/multi-5_eq_def.eps}
-\includegraphics[width=6cm,height=3cm]{./pics/eq/multi-10_eq_def.eps}
-\includegraphics[width=6cm,height=3cm]{./pics/eq/multi-20_eq_def.eps}
-
 
 %TODO includegraphics{resultat multicouche defaut}
 
@@ -488,6 +458,46 @@ appreciable approximation de la fonction carree (figure \ref{fig:chartsqtest1}).
 \caption{Resultats apprentissage: 3 neurons, dataset 1}
 \label{fig:chartsqtest1}
 \end{figure}
+
+Maintenant on peut essayer de augmenter la precisions de notre dataset
+pour chercher d'obtenir une meilleure approximation. Pour notre 
+prochaine test on essayra de doubler la precision de notre dataset.
+Les figure \ref{fig:sqtest2} et \ref{fig:chartsqtest2} nous montront une sensible 
+emeilloration des prestations de notre reseau. 
+
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=12cm,height=9cm]{./pics/sqtest2.eps}
+\caption{Apprentissage fonction carree: 3 neurons, dataset 2}
+\label{fig:sqtest2}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=12cm,height=9cm]{./pics/chartsqtest2.eps}
+\caption{Resultats apprentissage: 3 neurons, dataset 2}
+\label{fig:chartsqtest2}
+\end{figure}
+
+Par contre on se rend tres vite compte que notre reseau commence a fatiguer.
+Apres un certains temps la vitesse d'apprentissage rallentisse beaucoup, 
+ce que comporte plusieurs millie de iterations pour emeilliorer de facon 
+significative notre approximations (la figure \ref{fig:chartsqtest3} nous
+montre les resultats en poursuivant l'entrainement de notre reseau jusq'a
+environ 30.000 epoques).La fonction d'erreur est deja assez proche de son minimum 
+globale il est arrive le moment de passer a une reseau un peu plus grande 
+avec donc plus de capacites de stockage.
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=12cm,height=9cm]{./pics/chartsqtest3.eps}
+\caption{Resultats apprentissage: 3 neurons, dataset 2, 30.000 iteractions}
+\label{fig:chartsqtest3}
+\end{figure}
+
 
 
 

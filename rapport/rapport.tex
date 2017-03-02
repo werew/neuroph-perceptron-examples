@@ -527,6 +527,41 @@ avec donc plus de capacites de stockage.
 \end{figure}
 
 
+\subsubsection{4 neurons caches}
+
+Avec une reseau a 4 neurons caches plus ou moin 10.000 iterations
+sont deja suffisantes pour obtenir un resultat qui depasse celui obtenu
+avant avec une couche de 3 neurons et 30.000 iterations 
+(figures \ref{fig:sqtest4} et \ref{fig:chartsqtest4}).
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=12cm,height=9cm]{./pics/sqtest4.eps}
+\caption{Apprentissage fonction carree: 4 neurons, dataset 2}
+\label{fig:sqtest4}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=12cm,height=9cm]{./pics/chartsqtest4.eps}
+\caption{Resultats apprentissage: 4 neurons, dataset 2}
+\label{fig:chartsqtest4}
+\end{figure}
+
+Avec un dataset encore plus grande (100 inputs) et apres environ
+30.000 iterations on arrive a obtenir une approximation suffisament
+precise (fig \ref{chartsqtest5}) pour montrer notre point:
+un perceptron multicouche avec une seule couche cache est suffisant pour
+approximer la fonction carre (comme aussi n'importe quelle fonction continue) 
+et la precisione depend strictement du nombre de neurons dans la couche cache.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=12cm,height=9cm]{./pics/chartsqtest5.eps}
+\caption{Resultats apprentissage: 4 neurons, dataset 2}
+\label{fig:chartsqtest5}
+\end{figure}
 
 
 %End content

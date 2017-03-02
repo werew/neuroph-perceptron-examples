@@ -140,7 +140,7 @@ poids.
 \end{figure}
 
 La figure \ref{fig:anderr} montre un exemple de courbe d'apprentissage
-obtenu avec les valeurs susmentionnées.\\
+obtenu avec les valeurs susmentionnées.
 
 L'apprentissage peut être pensé comme le processus pendant lequel le
 réseau de neurons cherche de s'approcher le plus possible du plus petit
@@ -169,13 +169,15 @@ figure \ref{fig:andtest1} montre les résultats de l'entrainement:
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=7.3cm,height=2.3cm]{./pics/andtest1.eps}
+\includegraphics[width=9cm,height=3.3cm]{./pics/andtest1.eps}
 \caption{Test du perceptron après l'apprentissage de la fonction "et"}
 \label{fig:andtest1}
 \end{figure}
 
 En utilisant la definition de $E$ on peut vérifier que le coût
 moyen est bien proche de $0.01$:
+
+\vspace{1.1cm}
 
 \begin{equation*}
   \begin{aligned}
@@ -185,17 +187,20 @@ moyen est bien proche de $0.01$:
   \end{aligned}
 \end{equation*}
 
+\vspace{1.3cm}
+
 Le resultat obtenu est très proche de celui souhaité, en effet il suffit 
 d'introduire un seuil pour obtenir un output qui soit à 0 ou à 1.
 Dans Neuroph cela se traduit par l'utilisation de la fonction d'activation step pour le
 neurone d'output.
 
 
+\clearpage
 \begin{figure}[ht]
 \centering
 \includegraphics[width=12cm,height=9cm]{./pics/and_error2.eps}
 \caption{Courbe d'apprentissage de "et" en utilisant la fonction step}
-\label{fig:anderr}
+\label{fig:anderr1}
 \end{figure}
 
 
@@ -207,7 +212,7 @@ aucun taux d'erreur.
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=7.3cm,height=2.3cm]{./pics/andtest2.eps}
+\includegraphics[width=9cm,height=3.3cm]{./pics/andtest2.eps}
 \caption{Test d'erreur après l'apprentissage de la fonction "et"}
 \label{fig:andtest2}
 \end{figure}
@@ -251,12 +256,13 @@ tombe en-dessous de 0.01 après seulement 17 itérations. En revanche avec
 un pas de 0.1 le nombre d'itérations nécessaires pour obtenir le même
 résultat monte à plus de 155 itérations (figure \ref{fig:anderr3}).
 
+\clearpage
 \subsection{Equivalence logique}
-En matematique deux propositions sont dites equivalentes si l'un implique
-l'autre: $a \Leftrightarrow b$. La table de verite de l'équivalence logique
-est illustre par la table \ref{tab:eq}.
+En mathématique deux propositions sont dites équivalentes si elles s'impliquent
+l'une l'autre: $a \Leftrightarrow b$. La table de vérité de l'équivalence
+logique est illustrée par la table \ref{tab:eq}.
 Cette table de vérité nous servira de data set pour l'entrainement de tout
-les perceptron de cette partie.
+les perceptrons de cette partie.
 
 
 \begin{table}[ht]
@@ -278,51 +284,53 @@ les perceptron de cette partie.
   \label{tab:eq}
 \end{table}
 
-\subsubsection{Un perceptron monocouche pour $\Leftrightarrow$}
 
-Comme pour la fonction booléenne "et" précédente nous allons essayer de faire
-apprendre l'équivalence à un perceptron monocouche. Pour ca, nous utiliserons le meme
-perceptron monocouche que on a utilisee pour la fonction "et" (avec deux inputs
-et un output).Entrainons ce perceptron avec le data set sur 1000 itérations:
+\subsubsection{Un perceptron monocouche pour l'équivalence}
 
-\begin{figure}
+Comme pour la fonction booléenne "et" précédente, nous allons essayer de faire
+apprendre l'équivalence à un perceptron monocouche. Pour cela, nous utiliserons le meme
+perceptron monocouche que l'on a utilisée pour la fonction "et" (avec deux inputs
+et un output). Entrainons ce perceptron sur 1000 itérations:
+
+\begin{figure}[ht]
 \centering
 \includegraphics[width=12cm,height=9cm]{./pics/eq/mono_eq_def.eps}
 \caption{Apprentissage de l'équivalence}
 \end{figure}
 
-Nous pouvons observer qu'il ne semble pas avoir de convergence avec ce
-perceptron en laissant les paramètre par défaut. Nous pouvons changer le pas
-d'apprentissage pour essayer d'avoir une convergence.
-
+Nous pouvons observer que le taux d'erreur du perceptron ne converge pas vers
+zero en laissant les paramètres par défaut. Nous pouvons changer le pas
+d'apprentissage pour essayer d'obtenir une convergence.
 Voyons se que cela donne avec des pas d'apprentissage de respectivement 0.1 ,
-0.01 et 0.001:
-
-\begin{figure}[ht]
-\centering
-\includegraphics[width=8cm,height=5cm]{./pics/eq/mono_eq_0.1.eps}
-\includegraphics[width=8cm,height=5cm]{./pics/eq/mono_eq_0.01.eps}
-\includegraphics[width=8cm,height=5cm]{./pics/eq/mono_eq_0.001.eps}
-\caption{Apprentissage équivalence avec un pas de 0.1, 0.01 et 1}
-\end{figure}
+0.01 et 0.001 (figure \ref{fig:eqmono010010001}).
 
 Nous pouvons encore observer que cela ne permet pas de conduire à une convergence.
-
 Le perceptron monocouche ne semble donc pas adapté pour l'apprentissage de la fonction
 d'équivalence. En effet, nous pouvons remarquer que l'équivalence n'est pas une fonction
-linéairement séparable (figure \ref{fig:eqnlin}).
+linéairement séparable (figure \ref{fig:eqnlin}), ceci explique pourquoi un
+perceptron monocouche ne peut pas apprendre de manière correcte la fonction
+d'équivalence.
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=6cm,height=3cm]{./pics/eqnonlin/eqlinsep.eps}
+\includegraphics[width=6cm,height=5cm]{./pics/eq/mono_eq_0.1.eps}
+\includegraphics[width=6cm,height=5cm]{./pics/eq/mono_eq_0.01.eps}
+\includegraphics[width=6cm,height=5cm]{./pics/eq/mono_eq_0.001.eps}
+\caption{Apprentissage équivalence avec un pas de 0.1, 0.01 et 1}
+\label{fig:eqmono010010001}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=10cm]{./pics/eqnonlin/eqlinsep.eps}
 \caption{L'équivalence n'est pas linéairement separable}
 \label{fig:eqnlin}
 \end{figure}
 
-Ceci explique pourquoi un perceptron monocouche ne peut pas apprendre de manière correcte
-la fonction d'équivalence.
+\clearpage
 
-\subsubsection{Un perceptron multicouche pour $ \Leftrightarrow $}
+
+\subsubsection{Un perceptron multicouche pour l'équivalence}
 
 Pour permettre l'apprentissage de l'équivalence par un perceptron, il faut donc que
 celui-ci soit un perceptron multicouche.
@@ -336,7 +344,7 @@ Nous allons donc créer un perceptron multicouche qui contiendra une couche cach
 \label{fig:eqmq}
 \end{figure}
 
-Testons ce perceptron avec le dataset et les paramètres par défaut:
+Testons ce perceptron avec les paramètres par défaut:
 
 \begin{figure}[ht]
 \centering
@@ -349,121 +357,101 @@ après environ 3900 itérations.
 Nous allons maintenant voir comment le changement de certains paramètres
 influence la courbe d'apprentissage. Voyons tout d'abord les effets d'un
 changement du pas d'apprentissage en essayant avec des pas d'apprentissages de
-respectivement 0.1 , 0.5 et 1.
+respectivement 0.1 , 0.5 et 1 (figure \ref{fig:eqmult01051}).
+
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=6cm,height=3cm]{./pics/eq/multi_eq_0.1.eps}
-\caption{Apprentissage équivalence avec un pas de 0.1}
+\includegraphics[width=6cm,height=5cm]{./pics/eq/multi_eq_0.1.eps}
+\includegraphics[width=6cm,height=5cm]{./pics/eq/multi_eq_0.5.eps}
+\includegraphics[width=6cm,height=5cm]{./pics/eq/multi_eq_1.eps}
+\caption{Apprentissage équivalence avec un pas de 0.1, 0.5 et 1}
+\label{fig:eqmult01051}
 \end{figure}
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=6cm,height=3cm]{./pics/eq/multi_eq_0.5.eps}
-\caption{Apprentissage équivalence avec un pas de 0.5}
+\includegraphics[width=6cm,height=5cm]{./pics/eq/multi-5_eq_def.eps}
+\includegraphics[width=6cm,height=5cm]{./pics/eq/multi-10_eq_def.eps}
+\includegraphics[width=6cm,height=5cm]{./pics/eq/multi-20_eq_def.eps}
+\caption{Apprentissage équivalence avec 5, 10 et 20 neurones cachés}
+\label{fig:eqmult51020}
 \end{figure}
+\clearpage
 
-\begin{figure}[ht]
-\centering
-\includegraphics[width=6cm,height=3cm]{./pics/eq/multi_eq_1.eps}
-\caption{Apprentissage équivalence avec un pas de 1}
-\end{figure}
+Ces 3 graphiques permettent de mettre en évidence le faite que plus le pas
+d'apprentissage est grand, plus les variations ont de chance d'etre soudaine;
+et plus le pas est petit, plus la courbe sera uniforme (avec des variations
+moins prononcées). Cela correspond bien à nos attentes étant donnée que le 
+pas d'apprentissage est utilisé pour déterminer la vitesse de déplacement
+sur la courbe d'erreur.  
 
-Changeons à présent le nombre de neurone dans la couche caché.
-Nous allons partir d'un réseau de 5 neurones, et le doublé d'un perceptron
-à l'autre. Nous pourrons ainsi voir assez rapidement si le nombre de neurone
-influe grandement sur les résultats.
-Les graphiques ci dessus représentant donc respectivement les résultats pour
-des perceptrons de 5, 10 et 20 neurone dans une couche caché.
-
-\begin{figure}[ht]
-\centering
-\includegraphics[width=6cm,height=3cm]{./pics/eq/multi-5_eq_def.eps}
-\caption{Apprentissage fonction "et" avec un pas de 1}
-\end{figure}
-
-\begin{figure}[ht]
-\centering
-\includegraphics[width=6cm,height=3cm]{./pics/eq/multi-10_eq_def.eps}
-\caption{Apprentissage fonction "et" avec un pas de 1}
-\end{figure}
-
-\begin{figure}[ht]
-\centering
-\includegraphics[width=6cm,height=3cm]{./pics/eq/multi-20_eq_def.eps}
-\caption{Apprentissage fonction "et" avec un pas de 1}
-\end{figure}
-
-
-Augmenter le nombre neurone dans la couche caché semble diminuer le nombre
+Changeons à présent le nombre de neurone dans la couche caché.  Nous allons
+partir d'un réseau de 5 neurones, et les doubler à chaque fois. Nous
+pourrons ainsi voir assez rapidement si le nombre de neurone influe grandement
+sur les résultats. La figure \ref{fig:eqmult51020} représente donc
+respectivement les résultats pour des perceptrons de 5, 10 et 20 neurones dans
+une couche caché.
+Augmenter le nombre de neurones dans la couche caché semble diminuer le nombre
 d'itération nécessaire pour que la courbe converge.
-La courbe semble aussi être plus "lisse".
+La courbe semble aussi être plus "uniforme".
 
-Essayons maintenant maintenant d'ajouter plus de couche cachées. Voyons la
+Essayons maintenant d'ajouter plus de couche cachées. Voyons la
 courbe que l'on obtient avec un perceptron de deux couches cachées avec 3 
 neurones chacune.
 
 \begin{figure}[ht]
 \centering
 \includegraphics[width=12cm,height=9cm]{./pics/eq/multi_3_3_def.eps}
-\caption{Apprentissage fonction "et" avec un pas de 1}
+\caption{Apprentissage équivalence avec 2 couches cachées de 3 neurones chacunes}
 \end{figure}
 
 
 Rajouter une couche cachée supplémentaire ne semble pas améliorer le nombre d'itération
-nécessaire par rapport à un perceptron à une seule couche cachée.
+nécessaire par rapport à un perceptron à une seule couche cachée.  Essayons de
+rajouter plus de neurones dans le couches cachées (figures \ref{fig:eqmult2cc4}
+et \ref{fig:eqmult2cc6}).Rajouter des neurones dans les couche intermédiaire
+n'améliore pas le résultat non plus.
+
+Enfin comme vu précédement, le changement de la fonction d'activation par la
+fonction step nous permet d'introduire un seuil et donc d'obtenir un résultat
+binaire (figure \ref{fig:eqstep}) qui correpsond bien à la nature de notre
+fonction. 
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=6cm,height=3cm]{./pics/eq/multi_3_3_def.eps}
-\caption{Apprentissage fonction "et" avec un pas de 1}
+\includegraphics[width=9cm,height=3.3cm]{./pics/eq/stepeq.eps}
+\caption{Résultat du test avec la fonction d'activation step}
+\label{fig:eqstep}
 \end{figure}
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=6cm,height=3cm]{./pics/eq/multi_4_4_def.eps}
-\caption{Apprentissage fonction "et" avec un pas de 1}
+\includegraphics[width=12cm,height=9cm]{./pics/eq/multi_4_4_def.eps}
+\caption{Apprentissage équivalence avec 2 couches cachées de 4 neurones chacunes}
+\label{fig:eqmult2cc4}
 \end{figure}
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=6cm,height=3cm]{./pics/eq/multi_6_6_def.eps}
-\caption{Apprentissage fonction "et" avec un pas de 1}
+\includegraphics[width=12cm,height=9cm]{./pics/eq/multi_6_6_def.eps}
+\caption{Apprentissage équivalence avec 2 couches cachées de 6 neurones chacunes}
+\label{fig:eqmult2cc6}
 \end{figure}
 
-\begin{figure}[ht]
-\centering
-\includegraphics[width=6cm,height=3cm]{./pics/eq/multi_3_4_def.eps}
-\caption{Apprentissage fonction "et" avec un pas de 1}
-\end{figure}
+
 \clearpage
-
-Rajouter des neurones dans les couche intermédiaire n'améliore pas le résultat
-non plus.
-
-\begin{figure}[ht]
-\centering
-\includegraphics[width=6cm,height=3cm]{./pics/eq/multi_3_3_3_def.eps}
-\caption{Apprentissage fonction "et" avec un pas de 1}
-\end{figure}
-
-
-Et rajouter encore une couche fait croitre la courbe jusqu'a ce qu'elle se
-stabilise et ne semble plus diminuer.
-
-
 \section{Apprentissage de la fonction: $f(x) = x^2$}
 
 Il est temps de tester si un perceptron (mono-couche ou multi-couches) est
-capable d'apprendre une fonction un peu plus complexe que celle qu'on a vu jusqu'à présent: 
-la fonction carré: $f(x) = x^2$ !\\
+capable d'apprendre une fonction un peu plus complexe que celle qu'on a vu
+jusqu'à présent, la fonction carré: $f(x) = x^2$ \\
 
 Plusieurs différences sont à notées par rapport aux fonctions précédentes.
 Si avant, le domaine de nos fonctions binaires étaient réduit à ${0,1}$, cette
 fois nous sommes confrontés à une fonction continue définie dans tout $\mathbb{R}$.
-%TODO if there is time: can we implement a NN in R? %
 Une autre différence est liée au type et nombre d'inputs, et change
-considérablement le paradigme utilisé par notre réseau:\\
+considérablement le paradigme utilisé par notre réseau.
 
 Un concept que nous n'avons pas introduit jusqu'à présent est l'éxistence de plusieur
 types de données pour l'apprentissage, et autant de paradigmes d'apprentissage qui en
@@ -471,10 +459,10 @@ découlent. Les deux principaux types de données avec lesquels on doit faire
 face sont:
 
 \begin{itemize}
-\item Des variables catégorielles (dit aussi qualitative) - où il y a généralement
+\item des variables catégorielles (dit aussi qualitative) - où il y a généralement
       un ou plusieurs cas qui peuvent être regroupés en différentes catégories 
      (par example: haut, bas ou rouge, vert, bleu, etc.)
-\item Des données quantitatives qui se présentes comme une mesure numérique d'un attribut
+\item des données quantitatives qui se présentes comme une mesure numérique d'un attribut
 \end{itemize}
 
 On appelle %TODO%Les types d'apprentissage utilisé pour reconnaitre et classifier des données
@@ -498,8 +486,8 @@ problème pour distinguer des données linéairement séparables, mais il échou
 à reconnaitre des schémas un peu plus complexe. Il n'est donc 
 probablement adapté à notre problème.\\
 
-Le théorème de l'approximation universelle (aussi connu sous le nom de théoèeme de Cybenko) 
-nous dis qu'un perceptron multi-couches avec une seule couche cachée (avec un nombre
+Le théorème de l'approximation universelle (aussi connu sous le nom de théorème de Cybenko) 
+nous dis qu'un perceptron multi-couches avec une seule couche cachée (et un nombre
 fini de neurones) peut approximer n'importe quelle fonction continue dans un 
 intervalle de $\mathbb{R}$.
 \footnote{
@@ -521,7 +509,7 @@ d'activation sigmoide, c'est pour cette raison que l'on normalisera les inputs
 d'apprentissage pour les borner entre l'intervalle $[0,1]$ (codomaine de la
 fonction sigmoide).
 
-\subsubsection{3 neurons cache}
+\subsubsection{3 neurones cachés}
 
 Pour ne pas surcharger notre  perceptron on pourrait commencer à tester
 ses capacités d'apprentissage avec un dataset de dimensions réduites (table
@@ -633,7 +621,7 @@ précedement avec une couche de 3 neuronés et 30.000 itérations
 
 Avec un dataset encore plus grand (100 inputs) et après environ
 30.000 itérations, on arrive à obtenir une approximation suffisament
-précise (fig \ref{chartsqtest5}) comme supposé par le théorème de Cybenko:
+précise (fig \ref{fig:chartsqtest5}) comme supposé par le théorème de Cybenko:
 un perceptron multicouche avec une seule couche cachée est suffisant pour
 approximer la fonction carré (comme n'importe quelle fonction continue) 
 et la précision dépend strictement du nombre de neurones dans la couche caché.

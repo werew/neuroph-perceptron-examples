@@ -254,6 +254,8 @@ resultat monte a plus de 155 iterations (figure \ref{fig:anderr3}).
 En matematique deux propositions sont dites equivalentes si l'un implique
 l'autre: $a \Leftrightarrow b$. La table de verite de l'equivalence logique
 est illustre par la table \ref{tab:eq}.
+Cette table de vérité nous servira de data set pour l'entrainement de tout
+les perceptron de cette partie.
 
 
 \begin{table}[h]
@@ -275,17 +277,27 @@ est illustre par la table \ref{tab:eq}.
   \label{tab:eq}
 \end{table}
 
-\subsubsection{Un perceptron pour $\Leftrightarrow$}
+\subsubsection{Un perceptron monocouche pour $\Leftrightarrow$}
 
 Comme pour la fonction booléenne "et" précédente nous allons essayer de faire apprendre
 l'équivalence à un perceptron monocouche. Nous avons donc créé un perceptron monocouche
 avec deux inputs et un output
 
+\begin{figure}[h]
+\centering
 \includegraphics[width=5cm,height=7cm]{./pics/eq/perceptron_mono.eps}
+\caption{Apprentissage fonction "et" avec un pas de 1}
+\label{fig:anderr4}
+\end{figure}
 
 Entrainons ce perceptron avec le data set sur 1000 itérations.
 
+\begin{figure}[h]
+\centering
 \includegraphics[width=12cm,height=9cm]{./pics/eq/mono_eq_def.eps}
+\caption{Apprentissage fonction "et" avec un pas de 1}
+\label{fig:anderr4}
+\end{figure}
 
 Nous pouvons observer qu'il ne semble pas avoir de convergence avec ce perceptron
 en laissant les paramètre par défaut.
@@ -293,10 +305,24 @@ Nous pouvons changer le pas d'apprentissage pour essayer d'avoir
 une convergence.
 
 Voyons se que cela donne avec des pas d'apprentissage de respectivement 0.1 , 0.01 , 0.001.
- 
+
+\begin{figure}[h]
+\caption{Apprentissage fonction "et" avec un pas de 1}
 \includegraphics[width=6cm,height=3cm]{./pics/eq/mono_eq_0.1.eps}
+\label{fig:anderr4}
+\end{figure}
+
+\begin{figure}[h]
 \includegraphics[width=6cm,height=3cm]{./pics/eq/mono_eq_0.01.eps}
+\caption{Apprentissage fonction "et" avec un pas de 1}
+\label{fig:anderr4}
+\end{figure}
+
+\begin{figure}[h]
 \includegraphics[width=6cm,height=3cm]{./pics/eq/mono_eq_0.001.eps}
+\caption{Apprentissage fonction "et" avec un pas de 1}
+\label{fig:anderr4}
+\end{figure}
 
 Nous pouvons encore observer que cela ne permet pas de conduire à une convergence.
 
@@ -309,17 +335,29 @@ linéairement séparable.
 Ceci explique pourquoi un perceptron monocouche ne peut pas apprendre de manière correcte
 la fonction d'équivalence.
 
+\subsubsection{Un perceptron multicouche pour $\Lefttrightarrow$}
+
 Pour permettre l'apprentissage de l'équivalence par un perceptron, il faut donc que
 celui-ci soit un perceptron multicouche.
 Nous allons donc créer un perceptron multicouche qui contiendra une couche caché de
 3 neurones, et avec toujours 2 inputs et un un output.
 Cela nous donne le perceptron ci-dessous:
 
+\begin{figure}[h]
+\centering
 \includegraphics[width=5cm,height=7cm]{./pics/eq/perceptron_multi.eps}
+\caption{Apprentissage fonction "et" avec un pas de 1}
+\label{fig:anderr4}
+\end{figure}
 
 Testons ce perceptron avec le data set et les paramètre par défaut.
 
+\begin{figure}[h]
+\centering
 \includegraphics[width=12cm,height=9cm]{./pics/eq/multi_eq_def.eps}
+\caption{Apprentissage fonction "et" avec un pas de 1}
+\label{fig:anderr4}
+\end{figure}
 
 Il semble y avoir une convergence vers 3900 itérations.
 
@@ -328,18 +366,107 @@ les effets d'un changement de pas d'apprentissage.
 
 Les pas d'apprentissages sont respectivement de 0.1 , 0.5 , 1.
 
+\begin{figure}[h]
+\caption{Apprentissage fonction "et" avec un pas de 1}
 \includegraphics[width=6cm,height=3cm]{./pics/eq/multi_eq_0.1.eps}
+\label{fig:anderr4}
+\end{figure}
+
+\begin{figure}[h]
 \includegraphics[width=6cm,height=3cm]{./pics/eq/multi_eq_0.5.eps}
+\caption{Apprentissage fonction "et" avec un pas de 1}
+\label{fig:anderr4}
+\end{figure}
+
+\begin{figure}[h]
 \includegraphics[width=6cm,height=3cm]{./pics/eq/multi_eq_1.eps}
+\caption{Apprentissage fonction "et" avec un pas de 1}
+\label{fig:anderr4}
+\end{figure}
 
 Changeons à présent le nombre de neurone dans la couche caché.
+Nous allons partir d'un réseau de 5 neurones, et le doublé d'un perceptron
+à l'autre. Nous pourrons ainsi voir assez rapidement si le nombre de neurone
+influe grandement sur les résultats.
+Les graphique représente donc respectivement les résultats pour
+des perceptrons de 5, 10 et 20 neurone dans une couche caché.
 
-
+\begin{figure}[h]
 \includegraphics[width=6cm,height=3cm]{./pics/eq/multi-5_eq_def.eps}
-\includegraphics[width=6cm,height=3cm]{./pics/eq/multi-10_eq_def.eps}
-\includegraphics[width=6cm,height=3cm]{./pics/eq/multi-20_eq_def.eps}
+\caption{Apprentissage fonction "et" avec un pas de 1}
+\label{fig:anderr4}
+\end{figure}
 
-%TODO includegraphics{resultat multicouche defaut}
+\begin{figure}[h]
+\includegraphics[width=6cm,height=3cm]{./pics/eq/multi-10_eq_def.eps}
+\caption{Apprentissage fonction "et" avec un pas de 1}
+\label{fig:anderr4}
+\end{figure}
+
+\begin{figure}[h]
+\includegraphics[width=6cm,height=3cm]{./pics/eq/multi-20_eq_def.eps}
+\caption{Apprentissage fonction "et" avec un pas de 1}
+\label{fig:anderr4}
+\end{figure}
+
+
+Augmenter le nombre neurone dans la couche caché semble diminuer le nombre
+d'itération nécessaire pour que la courbe converge.
+La courbe semble aussi être plus "lisse".
+
+Essayons maintenant maintenant d'ajouter plus de couche cachées. Voyons la
+courbe que l'on obtient avec un perceptron de deux couches cachées avec 3 
+neurones chacune.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=12cm,height=9cm]{./pics/eq/multi_3_3_def.eps}
+\caption{Apprentissage fonction "et" avec un pas de 1}
+\label{fig:anderr4}
+\end{figure}
+
+
+Rajouter une couche cachée supplémentaire ne semble pas améliorer le nombre d'itération
+nécessaire par rapport à un perceptron à une seule couche cachée.
+
+\begin{figure}[h]
+\includegraphics[width=6cm,height=3cm]{./pics/eq/multi_3_3_def.eps}
+\caption{Apprentissage fonction "et" avec un pas de 1}
+\label{fig:anderr4}
+\end{figure}
+
+\begin{figure}[h]
+\includegraphics[width=6cm,height=3cm]{./pics/eq/multi_4_4_def.eps}
+\caption{Apprentissage fonction "et" avec un pas de 1}
+\label{fig:anderr4}
+\end{figure}
+
+\begin{figure}[h]
+\includegraphics[width=6cm,height=3cm]{./pics/eq/multi_6_6_def.eps}
+\caption{Apprentissage fonction "et" avec un pas de 1}
+\label{fig:anderr4}
+\end{figure}
+
+\begin{figure}[h]
+\includegraphics[width=6cm,height=3cm]{./pics/eq/multi_3_4_def.eps}
+\caption{Apprentissage fonction "et" avec un pas de 1}
+\label{fig:anderr4}
+\end{figure}
+
+
+Rajouter des neurones dans les couche intermédiaire n'améliore pas le résultat non plus.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=6cm,height=3cm]{./pics/eq/multi_3_3_3_def.eps}
+\caption{Apprentissage fonction "et" avec un pas de 1}
+\label{fig:anderr4}
+\end{figure}
+
+
+Et rajouter encore une couche fait croitre la courbe jusqu'a ce qu'elle se
+stabilise et ne semble plus diminuer.
+
 
 
 

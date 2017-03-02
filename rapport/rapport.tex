@@ -39,6 +39,7 @@
 % La table des matières
 \parskip=0pt
 \tableofcontents
+\clearpage
 
 
 \vspace{5cm}
@@ -54,15 +55,15 @@ de neurones.
 \subsection{"Et" logique}
 
 En matematique la conjonction logique $\land$ est un
-connecteur logique qui, étant donné deux propositions $A$ et $B$
-forme une nouvelle propositions $A \land B$ qui est vrai seulement
-si $A$ et $B$ sont vraies.
+connecteur logique que, étant donné deux propositions $a$ et $b$
+forme une nouvelle propositions $a \land b$ qui est vrai seulement
+si $a$ et $b$ sont vraies.
 
 \begin{table}[h]
   \centering
   \begin{tabular}{| c | c | c |}
     \hline
-    \textbf{$A$} & \textbf{$B$} & \textbf{$A \land B$}\\
+    \textbf{$a$} & \textbf{$b$} & \textbf{$a \land b$}\\
     \hline
     0 & 0  & 0 \\
     \hline
@@ -73,7 +74,7 @@ si $A$ et $B$ sont vraies.
     1 & 1  & 1 \\
     \hline
   \end{tabular}
-  \caption{Table de vérité de $A \land B$}
+  \caption{Table de vérité de $a \land b$}
   \label{tab:et}
 \end{table}
 
@@ -335,7 +336,7 @@ linéairement séparable.
 Ceci explique pourquoi un perceptron monocouche ne peut pas apprendre de manière correcte
 la fonction d'équivalence.
 
-\subsubsection{Un perceptron multicouche pour $\Lefttrightarrow$}
+\subsubsection{Un perceptron multicouche pour $ \Lefttrightarrow $}
 
 Pour permettre l'apprentissage de l'équivalence par un perceptron, il faut donc que
 celui-ci soit un perceptron multicouche.
@@ -466,36 +467,6 @@ Rajouter des neurones dans les couche intermédiaire n'améliore pas le résulta
 
 Et rajouter encore une couche fait croitre la courbe jusqu'a ce qu'elle se
 stabilise et ne semble plus diminuer.
-
-
-
-
-\iffalse
-% TODO %
-1) En suivant l'exemple precedent proposer un perceptron mono couche pour
-   l'equivalence logique 
-    - Montrer la courbe d'apprentissage:
-    - Expliquer pourquoi la courbe d'apprentissage ne converge pas
-        --> Parceque l'eq. n'est pas linéairement separable
-    - Montrer que avec un pas d'apprentissage different le resultat
-      ne change pas (essayer avec 0.1 et 1)
-2) Proposer un perceptron multi-couches
-    - Montrer que l'apprentissage converge
-3) Montrer les resultats en changeant:
-    - pas d'apprentissage
-    - fonction d'activation
-    - nombre de neurones
-    - nombre de couches 
-    ==> faire beaucoup de screenshots de Neuroph :)
-        (ex. resultats des test, interface 
-NB:
-  - pas besoin de screenshot pour la courbe d'apprentissage
-    on peut la sauvgarder directement
-  - pour convertir un image au format eps (pour latex) il suffit
-    simplement `convert image.truc image.eps` sur bash
-  - si il y a besoin de generer des images avec gnuplot 
-    je peut me n'occuper
-\fi
 
 
 \section{Apprentissage de la fonction: $f(x) = x^2$}

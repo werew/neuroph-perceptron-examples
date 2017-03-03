@@ -81,7 +81,7 @@ si $a$ et $b$ sont vraies.
 
 
 
-\subsubsection{Un perceptron pour $\land$} 
+\subsubsection{Un perceptron pour la fonction "et"} 
 
 Est il possible d'utiliser un perceptron pour apprendre la fonction logique
 "et"? Bien sur, en effet même un perceptron mono-couche est suffisant pour
@@ -212,7 +212,7 @@ aucun taux d'erreur.
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=9cm,height=3.3cm]{./pics/andtest2.eps}
+\includegraphics[width=9cm,height=3.2cm]{./pics/andtest2.eps}
 \caption{Test d'erreur après l'apprentissage de la fonction "et"}
 \label{fig:andtest2}
 \end{figure}
@@ -339,7 +339,7 @@ Nous allons donc créer un perceptron multicouche qui contiendra une couche cach
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=5cm,height=7cm]{./pics/eq/perceptron_multi.eps}
+\includegraphics[width=5.4cm,height=7cm]{./pics/eq/perceptron_multi.eps}
 \caption{Perceptron multi-couche}
 \label{fig:eqmq}
 \end{figure}
@@ -418,12 +418,6 @@ fonction step nous permet d'introduire un seuil et donc d'obtenir un résultat
 binaire (figure \ref{fig:eqstep}) qui correpsond bien à la nature de notre
 fonction. 
 
-\begin{figure}[ht]
-\centering
-\includegraphics[width=9cm,height=3.3cm]{./pics/eq/stepeq.eps}
-\caption{Résultat du test avec la fonction d'activation step}
-\label{fig:eqstep}
-\end{figure}
 
 \begin{figure}[ht]
 \centering
@@ -439,8 +433,17 @@ fonction.
 \label{fig:eqmult2cc6}
 \end{figure}
 
+\begin{figure}[ht]
+\centering
+\includegraphics[width=9cm,height=3cm]{./pics/eq/stepeq.eps}
+\caption{Résultat du test avec la fonction d'activation step}
+\label{fig:eqstep}
+\end{figure}
 
 \clearpage
+
+
+
 \section{Apprentissage de la fonction: $f(x) = x^2$}
 
 Il est temps de tester si un perceptron (mono-couche ou multi-couches) est
@@ -465,9 +468,10 @@ face sont:
 \item des données quantitatives qui se présentes comme une mesure numérique d'un attribut
 \end{itemize}
 
-On appelle %TODO%Les types d'apprentissage utilisé pour reconnaitre et classifier des données
-appartenant à la première famille "classification". D'un autre côté l'apprentissage
-supervisé avec des données quantitatives est appellé "régression".\cite{kindsNN}\\
+Le type d'apprentissage qu'on utilise pour reconnaitre et classifier des
+données appartenant à la première famille est appellé "classification". 
+En revanche l'apprentissage supervisé avec des données quantitatives est appellé
+"régression".\cite{kindsNN}\\
 
 Pour récapituler: la régression consiste à estimer ou à prédire une réponse,
 la classification est l'identification de l'appartenance à un groupe.\\
@@ -574,7 +578,7 @@ une amélioration sensible des performances de notre réseau.
 \begin{figure}[ht]
 \centering
 \includegraphics[width=12cm,height=9cm]{./pics/chartsqtest2.eps}
-\caption{Resultat apprentissage: 3 neurons, dataset 2}
+\caption{Résultat apprentissage: 3 neurons, dataset 2}
 \label{fig:chartsqtest2}
 \end{figure}
 
@@ -608,20 +612,20 @@ précedement avec une couche de 3 neuronés et 30.000 itérations
 \begin{figure}[ht]
 \centering
 \includegraphics[width=12cm,height=9cm]{./pics/sqtest4.eps}
-\caption{Apprentissage fonction carré: 4 neurones, dataset 2}
+\caption{Apprentissage fonction carré: 4 neurones, dataset 2, 10.000 itérations}
 \label{fig:sqtest4}
 \end{figure}
 
 \begin{figure}[ht]
 \centering
 \includegraphics[width=12cm,height=9cm]{./pics/chartsqtest4.eps}
-\caption{Résultat apprentissage: 4 neurones, dataset 2}
+\caption{Résultat apprentissage: 4 neurones, dataset 2, 10.000 itérations}
 \label{fig:chartsqtest4}
 \end{figure}
 
 Avec un dataset encore plus grand (100 inputs) et après environ
 30.000 itérations, on arrive à obtenir une approximation suffisament
-précise (fig \ref{fig:chartsqtest5}) comme supposé par le théorème de Cybenko:
+précise (figure \ref{fig:chartsqtest5}) comme supposé par le théorème de Cybenko:
 un perceptron multicouche avec une seule couche cachée est suffisant pour
 approximer la fonction carré (comme n'importe quelle fonction continue) 
 et la précision dépend strictement du nombre de neurones dans la couche caché.
@@ -629,13 +633,38 @@ et la précision dépend strictement du nombre de neurones dans la couche caché
 \begin{figure}[ht]
 \centering
 \includegraphics[width=12cm,height=9cm]{./pics/chartsqtest5.eps}
-\caption{Resultats apprentissage: 4 neurons, dataset 2}
+\caption{Résultats apprentissage: 4 neurons, dataset 3, 30.000 itérations}
 \label{fig:chartsqtest5}
 \end{figure}
 
 
-%End content
 \clearpage
+\section{Conclusion}
+Comme nous avons pu le constater dans la première partie de ce rapport, les
+perceptrons pouvent etre utilisés éfficacement dans la classification des données.
+En particulier un perceptron monocouche est suffisant pour déterminer une
+catagorisation entre des ensembles de données linéarement séparables.\\
+
+Nous avons aussi pu voir que les perceptrons pouvent aussi etre utilisés dans
+le calcul et l'approximation de n'importe quelle fonction continue, ce résultat
+est résumé par le théorème de Cybenko.  Une couche avec plusieurs neurones
+comporte une capacité de stockage supérieure et permet donc une meilleure
+approximation.\\
+
+Pendant l'apprentissage on essaye de s'approcher le plus possible du minumim
+globale de la fonction d'erreur.\\
+
+Le pas d'apprentissage détermine la taille de chaque avancement pendant la
+recherche du minumim dans la fonction d'erreur.  Un grand pas d'apprentissage
+permet d'entrainer le perceptron plus rapidement mais risque de manquer le
+minimum global. En revanche un petit pas d'apprentissage permet de faire une
+recherche plus fine et de s'approcher plus précisement du minimum globale. Il
+risque cependant d'etre bloqué dans un minimum local.\\
+
+
+
+
+%End content
 \addcontentsline{toc}{section}{Références}
 \bibliographystyle{plain}
 \bibliography{rapport}

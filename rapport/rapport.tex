@@ -49,14 +49,14 @@
 \section{Fonctions booléennes}
 
 Dans la première section de ce rapport on se propose
-d'implementer des fonctions booléennes a l'aide des réseaux
+d'implementer des fonctions booléennes a l'aide de réseau
 de neurones. 
 
 \subsection{"Et" logique}
 
-En matematique la conjonction logique $\land$ est un
-connecteur logique que, étant donné deux propositions $a$ et $b$
-forme une nouvelle propositions $a \land b$ qui est vrai seulement
+En mathématiques la conjonction logique $\land$ est un
+connecteur qui étant donné deux propositions $a$ et $b$
+en forme une nouvelle $a \land b$ qui est vrai seulement
 si $a$ et $b$ sont vraies.
 
 \begin{table}[ht]
@@ -87,16 +87,16 @@ Est il possible d'utiliser un perceptron pour apprendre la fonction logique
 "et"? Bien sur, en effet même un perceptron mono-couche est suffisant pour
 obtenir ce resultat.\\
 
-Le perceptron peut être utilisé comme un classificateur linéaire, c'est-à-dire l'algorithme du
-perceptron permettant de reconnaitre et donc classifier des données (ou points)
+Le perceptron peut être utilisé comme un classificateur linéaire, c'est-à-dire que l'algorithme du
+perceptron permet de reconnaître et donc classifier des données (ou points)
 linéairement séparables.\\
 
 Un ensemble de points dans le plan caractérisé par deux sous-classes disjointes
-de points, est dit linéairement séparable si il éxiste une droite qui sépare
+de points, est dit linéairement séparable s'il existe une droite qui sépare
 complétement les deux sous-classes.\\
 
-En trois dimension, un ensemble est linéairement séparable si il éxiste un plan
-qui sépare les deux classes. En quatre ou plus dimensions on ne parlera plus de
+En trois dimension, un ensemble est linéairement séparable s'il existe un plan
+qui sépare les deux classes. S'il y a quatre ou plus de  dimensions on ne parlera plus de
 plan mais d'hyperplan.
 
 
@@ -108,14 +108,14 @@ plan mais d'hyperplan.
 \end{figure}
 
 
-Comme montre la figure \ref{fig:and} la fonction "et" est bien linéairement
-séparable. Etant donné que tout ensemble linéairement séparable peut être
-discriminé par un perceptron monocouche, on est sûr de pouvoir trouver un perceptron monocouche qui
+Comme le montre la figure \ref{fig:and} la fonction "et" est bien linéairement
+séparable. Sachant que tout ensemble linéairement séparable peut être
+discriminé par un perceptron mono-couche, on est sûr de pouvoir trouver un perceptron mono-couche qui
 engendre la fonction booléenne $\land$.\\
 
-Le perceptron créé avec Neuroph qu'on utilisera pour cette fonction 
+Le perceptron, créé avec Neuroph, qu'on utilisera pour cette fonction 
 est très simple et est illustré dans la figure \ref{fig:per_and}.
-Le data set pour l'apprentissage contiens les mêmes valeurs que la table
+Le data set pour l'apprentissage contient les mêmes valeurs que la table
 \ref{tab:et}.
 
 \begin{figure}[ht]
@@ -125,10 +125,10 @@ Le data set pour l'apprentissage contiens les mêmes valeurs que la table
 \label{fig:per_and}
 \end{figure}
 
-Pendant l'entrainement du perceptron (dont les poids ont été initialisés
+Pendant l'entraînement du perceptron (dont les poids ont été initialisés
 aléatoirement) avec un taux d'apprentissage de 0.2 (valeur par
 défaut) on obtient une courbe d'apprentissage qui converge toujours à
-zero. La forme de celle-ci dépendra essentiellement des valeurs initiales des
+zéro. La forme de celle-ci dépendra essentiellement des valeurs initiales des
 poids. 
 
 
@@ -143,29 +143,29 @@ La figure \ref{fig:anderr} montre un exemple de courbe d'apprentissage
 obtenu avec les valeurs susmentionnées.
 
 L'apprentissage peut être pensé comme le processus pendant lequel le
-réseau de neurons cherche de s'approcher le plus possible du plus petit
+réseau de neurones cherche de s'approcher le plus possible du plus petit
 taux d'erreur.\\
 
 En effet, la meilleure configuration (valeurs des poids, biais, etc.) pour
-notre réseau de neurones correspond au point de minimum globale de la fonction
+notre réseau de neurones correspond au point du minimum global de la fonction
 $E$ qui associe à chaque configuration de notre réseau de neurones un coût $C$.\\
 
-$E$ mesure la différence entre le valeur attendu et celle produite et est
-souvent calculé comme étant $E(y,y') = \tfrac{1}{2} \lVert y-y'\rVert^2$ ou $y$ est
-le valeur attendu et $y'$ est la valeur produite par le réseau.
+$E$ mesure la différence entre le valeur attendue et celle produite et est
+souvent calculée comme étant $E(y,y') = \tfrac{1}{2} \lVert y-y'\rVert^2$ ou $y$ est
+la valeur attendue et $y'$ est la valeur produite par le réseau.
 Mais pourquoi $\lVert y-y'\rVert$ ne suffit simplement pas? 
-En effet, la choix d'utiliser une fonction quadratique n'est pas un hasard. 
-Un des problèmes les plus importants dans l'apprentissage supervivée d'un réseau
+En effet, le choix d'utiliser une fonction quadratique n'est pas un hasard. 
+Un des problèmes les plus importants dans l'apprentissage supervisé d'un réseau
 de neurones qui se base sur l'algorithme du gradient (gradient descent) est
-celui posé par les points de minimum locales de $E$. Le fait que $E$ soit
+celui posé par les points du minimum local de $E$. Le fait que $E$ soit
 quadratique permet d'exploiter la convexité des fonctions quadratique pour
-minimiser ce probleme. Le $\tfrac{1}{2}$ permet de simplifier la fonction lors
+minimiser ce problème. Le $\tfrac{1}{2}$ permet de simplifier la fonction lors
 de sa dérivation.\\
 
-Comme attendu, dans notre cas le perceptron n'a aucun problème à trouver le
-minimum globale de $E$, mais dans ce premiere exemple on se contente d'entrainer le
+Comme attendu dans notre cas, le perceptron n'a aucun problème à trouver le
+minimum global de $E$, mais dans ce premier exemple on se contente d'entraîner le
 réseau de neurones jusqu'à obtenir un taux d'erreur moyen de seulement 1\%. La
-figure \ref{fig:andtest1} montre les résultats de l'entrainement:
+figure \ref{fig:andtest1} montre les résultats de l'entraînement:
 
 \begin{figure}[ht]
 \centering
@@ -174,7 +174,7 @@ figure \ref{fig:andtest1} montre les résultats de l'entrainement:
 \label{fig:andtest1}
 \end{figure}
 
-En utilisant la definition de $E$ on peut vérifier que le coût
+En utilisant la définition de $E$ on peut vérifier que le coût
 moyen est bien proche de $0.01$:
 
 \vspace{1.1cm}
@@ -189,7 +189,7 @@ moyen est bien proche de $0.01$:
 
 \vspace{1.3cm}
 
-Le resultat obtenu est très proche de celui souhaité, en effet il suffit 
+Le résultat obtenu est très proche de celui souhaité, en effet il suffit 
 d'introduire un seuil pour obtenir un output qui soit à 0 ou à 1.
 Dans Neuroph cela se traduit par l'utilisation de la fonction d'activation step pour le
 neurone d'output.
@@ -218,22 +218,22 @@ aucun taux d'erreur.
 \end{figure}
 
 
-\subsubsection{Differents pas d'apprentissage}
+\subsubsection{Différents pas d'apprentissage}
 
 Le pas d'apprentissage détermine la vitesse (pas) avec laquelle notre réseau
 cherche à s'approcher du point d'erreur minimum. 
 A chaque époque ({\it batch learning}) ou itération ({\it incremental
-learning}) les poids du réseau sont mise à jour en utilisant une combinaison du
+learning}) les poids du réseau sont mis à jour en utilisant une combinaison du
 pas d'apprentissage et du gradient $\nabla E$ ce qui indique la direction du taux
 d'accroissement le plus élevé de $E$ et sa pente.\\
 
 Le pas d'apprentissage joue un rôle très important dans la recherche du
-minimum globale d'une fonction. 
-Si un pas d'apprentissage est trop grand, cela risque de ne pas atteindre le minimum globale.
-Inversement, un pas trop petit augmente le temps nécessaire pour entrainer le réseau et risque de
+minimum global d'une fonction. 
+Si un pas d'apprentissage est trop grand, cela risque de ne pas atteindre le minimum global.
+Inversement, un pas trop petit augmente le temps nécessaire pour entraîner le réseau et risque de
 se bloquer dans un point de minimum locale.\\
 
-Dans notre cas le changement du pas d'apprentissage n'a aucun effet que celui 
+Dans notre cas le changement du pas d'apprentissage n'a aucun autre effet que
 de changer la vitesse d'apprentissage.
 
 
@@ -258,10 +258,10 @@ résultat monte à plus de 155 itérations (figure \ref{fig:anderr3}).
 
 \clearpage
 \subsection{Equivalence logique}
-En mathématique deux propositions sont dites équivalentes si elles s'impliquent
+En mathématiques deux propositions sont dites équivalentes si elles s'impliquent
 l'une l'autre: $a \Leftrightarrow b$. La table de vérité de l'équivalence
 logique est illustrée par la table \ref{tab:eq}.
-Cette table de vérité nous servira de data set pour l'entrainement de tout
+Cette table de vérité nous servira de data set pour l'entraînement de tout
 les perceptrons de cette partie.
 
 
@@ -280,16 +280,16 @@ les perceptrons de cette partie.
     1 & 1  & 1 \\
     \hline
   \end{tabular}
-  \caption{Table de verite de $a \Leftrightarrow b$}
+  \caption{Table de vérité de $a \Leftrightarrow b$}
   \label{tab:eq}
 \end{table}
 
 
-\subsubsection{Un perceptron monocouche pour l'équivalence}
+\subsubsection{Un perceptron mono-couche pour l'équivalence}
 
 Comme pour la fonction booléenne "et" précédente, nous allons essayer de faire
-apprendre l'équivalence à un perceptron monocouche. Pour cela, nous utiliserons le meme
-perceptron monocouche que l'on a utilisée pour la fonction "et" (avec deux inputs
+apprendre l'équivalence à un perceptron mono-couche. Pour cela, nous utiliserons le même
+perceptron mono-couche que l'on a utilisé pour la fonction "et" (avec deux inputs
 et un output). Entrainons ce perceptron sur 1000 itérations:
 
 \begin{figure}[ht]
@@ -299,16 +299,16 @@ et un output). Entrainons ce perceptron sur 1000 itérations:
 \end{figure}
 
 Nous pouvons observer que le taux d'erreur du perceptron ne converge pas vers
-zero en laissant les paramètres par défaut. Nous pouvons changer le pas
+zéro en laissant les paramètres par défaut. Nous pouvons changer le pas
 d'apprentissage pour essayer d'obtenir une convergence.
-Voyons se que cela donne avec des pas d'apprentissage de respectivement 0.1 ,
+Voyons ce que cela donne avec des pas d'apprentissage de respectivement 0.1 ,
 0.01 et 0.001 (figure \ref{fig:eqmono010010001}).
 
 Nous pouvons encore observer que cela ne permet pas de conduire à une convergence.
-Le perceptron monocouche ne semble donc pas adapté pour l'apprentissage de la fonction
+Le perceptron mono-couche ne semble donc pas adapté pour l'apprentissage de la fonction
 d'équivalence. En effet, nous pouvons remarquer que l'équivalence n'est pas une fonction
 linéairement séparable (figure \ref{fig:eqnlin}), ceci explique pourquoi un
-perceptron monocouche ne peut pas apprendre de manière correcte la fonction
+perceptron mono-couche ne peut pas apprendre de manière correcte la fonction
 d'équivalence.
 
 \begin{figure}[ht]
@@ -323,24 +323,24 @@ d'équivalence.
 \begin{figure}[ht]
 \centering
 \includegraphics[width=10cm]{./pics/eqnonlin/eqlinsep.eps}
-\caption{L'équivalence n'est pas linéairement separable}
+\caption{L'équivalence n'est pas linéairement séparable}
 \label{fig:eqnlin}
 \end{figure}
 
 \clearpage
 
 
-\subsubsection{Un perceptron multicouche pour l'équivalence}
+\subsubsection{Un perceptron multi-couches pour l'équivalence}
 
 Pour permettre l'apprentissage de l'équivalence par un perceptron, il faut donc que
-celui-ci soit un perceptron multicouche.
-Nous allons donc créer un perceptron multicouche qui contiendra une couche cachée de
-3 neurones, et avec toujours 2 inputs et un un output (figure \ref{fig:eqmq}).
+celui-ci soit un perceptron multi-couches.
+Nous allons donc créer un perceptron multi-couches qui contiendra une couche cachée de
+3 neurones, et toujours avec 2 inputs et un un output (figure \ref{fig:eqmq}).
 
 \begin{figure}[ht]
 \centering
 \includegraphics[width=5.4cm,height=7cm]{./pics/eq/perceptron_multi.eps}
-\caption{Perceptron multi-couche}
+\caption{Perceptron multi-couches}
 \label{fig:eqmq}
 \end{figure}
 
@@ -349,14 +349,14 @@ Testons ce perceptron avec les paramètres par défaut:
 \begin{figure}[ht]
 \centering
 \includegraphics[width=12cm,height=9cm]{./pics/eq/multi_eq_def.eps}
-\caption{Apprentissage équivalence avec perceptron multi-couche}
+\caption{Apprentissage équivalence avec perceptron multi-couches}
 \end{figure}
 
-Notre perceptron multi-couche converge en dessous d'un taux d'erreur de 0.1
+Notre perceptron multi-couches converge en dessous d'un taux d'erreur de 0.1
 après environ 3900 itérations.
 Nous allons maintenant voir comment le changement de certains paramètres
 influence la courbe d'apprentissage. Voyons tout d'abord les effets d'un
-changement du pas d'apprentissage en essayant avec des pas d'apprentissages de
+changement du pas d'apprentissage en essayant avec des pas d'apprentissage de
 respectivement 0.1 , 0.5 et 1 (figure \ref{fig:eqmult01051}).
 
 
@@ -379,10 +379,10 @@ respectivement 0.1 , 0.5 et 1 (figure \ref{fig:eqmult01051}).
 \end{figure}
 \clearpage
 
-Ces 3 graphiques permettent de mettre en évidence le faite que plus le pas
-d'apprentissage est grand, plus les variations ont de chance d'etre soudaine;
+Ces 3 graphiques permettent de mettre en évidence le fait que plus le pas
+d'apprentissage est grand, plus les variations ont de chance d'être soudaine;
 et plus le pas est petit, plus la courbe sera uniforme (avec des variations
-moins prononcées). Cela correspond bien à nos attentes étant donnée que le 
+moins prononcées). Cela correspond bien à nos attentes étant donné que le 
 pas d'apprentissage est utilisé pour déterminer la vitesse de déplacement
 sur la courbe d'erreur.  
 
@@ -391,14 +391,14 @@ partir d'un réseau de 5 neurones, et les doubler à chaque fois. Nous
 pourrons ainsi voir assez rapidement si le nombre de neurone influe grandement
 sur les résultats. La figure \ref{fig:eqmult51020} représente donc
 respectivement les résultats pour des perceptrons de 5, 10 et 20 neurones dans
-une couche caché.
-Augmenter le nombre de neurones dans la couche caché semble diminuer le nombre
+une couche cachée.
+Augmenter le nombre de neurones dans la couche cachée semble diminuer le nombre
 d'itération nécessaire pour que la courbe converge.
 La courbe semble aussi être plus "uniforme".
 
-Essayons maintenant d'ajouter plus de couche cachées. Voyons la
+Essayons maintenant d'ajouter plus de couche cachée. Voyons la
 courbe que l'on obtient avec un perceptron de deux couches cachées avec 3 
-neurones chacune.
+neurones chacunes.
 
 \begin{figure}[ht]
 \centering
@@ -407,10 +407,10 @@ neurones chacune.
 \end{figure}
 
 
-Rajouter une couche cachée supplémentaire ne semble pas améliorer le nombre d'itération
+Rajouter une couche cachée ne semble pas améliorer le nombre d'itération
 nécessaire par rapport à un perceptron à une seule couche cachée.  Essayons de
-rajouter plus de neurones dans le couches cachées (figures \ref{fig:eqmult2cc4}
-et \ref{fig:eqmult2cc6}).Rajouter des neurones dans les couche intermédiaire
+rajouter plus de neurones dans la couche cachée (figures \ref{fig:eqmult2cc4}
+et \ref{fig:eqmult2cc6}). Rajouter des neurones dans les couches intermédiaires
 n'améliore pas le résultat non plus.
 
 Enfin comme vu précédement, le changement de la fonction d'activation par la
@@ -447,61 +447,61 @@ fonction.
 \section{Apprentissage de la fonction: $f(x) = x^2$}
 
 Il est temps de tester si un perceptron (mono-couche ou multi-couches) est
-capable d'apprendre une fonction un peu plus complexe que celle qu'on a vu
+capable d'apprendre une fonction un peu plus complexe que celle que l'on a vu
 jusqu'à présent, la fonction carré: $f(x) = x^2$ \\
 
-Plusieurs différences sont à notées par rapport aux fonctions précédentes.
-Si avant, le domaine de nos fonctions binaires étaient réduit à ${0,1}$, cette
-fois nous sommes confrontés à une fonction continue définie dans tout $\mathbb{R}$.
-Une autre différence est liée au type et nombre d'inputs, et change
+Plusieurs différences sont à noter par rapport aux fonctions précédentes.
+Si précédement, le domaine de nos fonctions binaires était réduit à ${0,1}$, cette
+fois nous sommes confronté à une fonction continue définie dans tout $\mathbb{R}$.
+Une autre différence est liée au type et au nombre d'inputs, ce qui change
 considérablement le paradigme utilisé par notre réseau.
 
-Un concept que nous n'avons pas introduit jusqu'à présent est l'éxistence de plusieur
-types de données pour l'apprentissage, et autant de paradigmes d'apprentissage qui en
+Un concept que nous n'avons pas introduit jusqu'à présent est l'existence de plusieurs
+types de données pour l'apprentissage, et d'autant de paradigmes d'apprentissage qui en
 découlent. Les deux principaux types de données avec lesquels on doit faire
 face sont:
 
 \begin{itemize}
-\item des variables catégorielles (dit aussi qualitative) - où il y a généralement
+\item des variables catégorielles (dites aussi qualitatives) - où il y a généralement
       un ou plusieurs cas qui peuvent être regroupés en différentes catégories 
-     (par example: haut, bas ou rouge, vert, bleu, etc.)
+     (par exemple: haut, bas ou rouge, vert, bleu, etc.)
 \item des données quantitatives qui se présentes comme une mesure numérique d'un attribut
 \end{itemize}
 
-Le type d'apprentissage qu'on utilise pour reconnaitre et classifier des
-données appartenant à la première famille est appellé "classification". 
-En revanche l'apprentissage supervisé avec des données quantitatives est appellé
+Le type d'apprentissage que l'on utilise pour reconnaître et classifier des
+données appartenant à la première famille sont appelées "classification". 
+En revanche l'apprentissage supervisé avec des données quantitatives est appelé
 "régression".\cite{kindsNN}\\
 
 Pour récapituler: la régression consiste à estimer ou à prédire une réponse,
 la classification est l'identification de l'appartenance à un groupe.\\
 
-Dans notre example precedents ("et" logique et équivalence) on a simplement
+Dans nos exemples précédents ("et" logique et équivalence) on a simplement
 traité des classifications binaires. Cette fois on est confronté avec des données
 de type quantitative.
 
 
 \subsection{Un perceptron pour la fonction $f(x) = x^2$}
-Un perceptron n'est pas le moyen plus efficace pour calculer cette 
+Un perceptron n'est pas le moyen le plus efficace pour calculer cette 
 fonction, mais peut il le faire?\\
 
 Comme nous l'avons vu précédement, un perceptron mono-couche peut être utilisé sans aucun
 problème pour distinguer des données linéairement séparables, mais il échoue 
-à reconnaitre des schémas un peu plus complexe. Il n'est donc 
-probablement adapté à notre problème.\\
+à reconnaître des schémas un peu plus complexe. Il n'est donc 
+probablement pas adapté à notre problème.\\
 
-Le théorème de l'approximation universelle (aussi connu sous le nom de théorème de Cybenko) 
-nous dis qu'un perceptron multi-couches avec une seule couche cachée (et un nombre
+Le théorème de l'approximation universelle (aussi connu sous le nom du théorème de Cybenko) 
+nous dit qu'un perceptron multi-couches avec une seule couche cachée (et un nombre
 fini de neurones) peut approximer n'importe quelle fonction continue dans un 
 intervalle de $\mathbb{R}$.
 \footnote{
-La démonstration mathématique de ce théorème est assez longue et complexe. Une approche visuelle
+La démonstration mathématiques de ce théorème est assez longue et complexe. Une approche visuelle
 qui se prête à une demonstration beaucoup plus intuive est proposé à \cite{visuniprof}.
 }
 \cite{cybthm}
 
 Pour l'apprentissage de la fonction carré nous allons donc utiliser un perceptron
-multi-couche avec une seule couche cachée et on cherchera à lui faire apprendre
+multi-couches avec une seule couche cachée et on cherchera à lui faire apprendre
 la fonction carré dans un intervalle de $\mathbb{R}$.
 
 Pour commencer on pourra utiliser un perceptron avec 3 neurones cachés comme
@@ -509,9 +509,9 @@ celui que l'on a utilisé précédement pour l'équivalence. Notre but sera
 d'approximer la fonction carré dans l'intervalle $[1,100]$.
 
 Dans notre exemple chaque neurone de notre perceptron utilisera la fonction
-d'activation sigmoide, c'est pour cette raison que l'on normalisera les inputs
+d'activation sigmoïde, c'est pour cette raison que l'on normalisera les inputs
 d'apprentissage pour les borner entre l'intervalle $[0,1]$ (codomaine de la
-fonction sigmoide).
+fonction sigmoïde).
 
 \subsubsection{3 neurones cachés}
 
@@ -537,7 +537,7 @@ nous avons normalisé notre data set.
     100 & 10000 \\
     \hline
   \end{tabular}
-  \caption{Fontion carre: dataset 1}
+  \caption{Fontion carré: dataset 1}
   \label{tab:fqt1}
 \end{table}
 
@@ -549,18 +549,18 @@ approximation appréciable de la fonction carré (figure \ref{fig:chartsqtest1})
 \begin{figure}[ht]
 \centering
 \includegraphics[width=12cm,height=9cm]{./pics/sqtest1.eps}
-\caption{Apprentissage fonction carré: 3 neurons, dataset 1}
+\caption{Apprentissage fonction carré: 3 neurones, dataset 1}
 \label{fig:sqtest1}
 \end{figure}
 
 \begin{figure}[ht]
 \centering
 \includegraphics[width=12cm,height=9cm]{./pics/chartsqtest1.eps}
-\caption{Résultat apprentissage: 3 neurons, dataset 1}
+\caption{Résultat apprentissage: 3 neurones, dataset 1}
 \label{fig:chartsqtest1}
 \end{figure}
 
-Maintenant nous pouvons essayer d'augmenter la précision de notre dataset
+A présent nous pouvons essayer d'augmenter la précision de notre dataset
 pour essayer d'obtenir une meilleure approximation. Pour notre 
 prochain test on essayera de doubler la précision de notre dataset.
 Les figures \ref{fig:sqtest2} et \ref{fig:chartsqtest2} nous montre 
@@ -571,14 +571,14 @@ une amélioration sensible des performances de notre réseau.
 \begin{figure}[ht]
 \centering
 \includegraphics[width=12cm,height=9cm]{./pics/sqtest2.eps}
-\caption{Apprentissage fonction carré: 3 neurons, dataset 2}
+\caption{Apprentissage fonction carré: 3 neurones, dataset 2}
 \label{fig:sqtest2}
 \end{figure}
 
 \begin{figure}[ht]
 \centering
 \includegraphics[width=12cm,height=9cm]{./pics/chartsqtest2.eps}
-\caption{Résultat apprentissage: 3 neurons, dataset 2}
+\caption{Résultat apprentissage: 3 neurones, dataset 2}
 \label{fig:chartsqtest2}
 \end{figure}
 
@@ -587,9 +587,9 @@ de ces capacités.
 Après un certain temps, la vitesse d'apprentissage ralentit beaucoup, 
 ce qui implique plusieurs milliés d'itérations pour améliorer de façon 
 significative notre approximations (la figure \ref{fig:chartsqtest3} nous
-montre les résultats en poursuivant l'entrainement de notre réseau jusqu'à
+montre les résultats en poursuivant l'entraînement de notre réseau jusqu'à
 environ 30.000 époques).La fonction d'erreur est déjà assez proche de son minimum 
-globale, c'est donc le moment de passer à un réseau un peu plus grand
+global, c'est donc le moment de passer à un réseau un peu plus grand
 et donc avec plus de capacites de stockage.
 
 
@@ -626,14 +626,14 @@ précedement avec une couche de 3 neuronés et 30.000 itérations
 Avec un dataset encore plus grand (100 inputs) et après environ
 30.000 itérations, on arrive à obtenir une approximation suffisament
 précise (figure \ref{fig:chartsqtest5}) comme supposé par le théorème de Cybenko:
-un perceptron multicouche avec une seule couche cachée est suffisant pour
+un perceptron multi-couches avec une seule couche cachée est suffisant pour
 approximer la fonction carré (comme n'importe quelle fonction continue) 
-et la précision dépend strictement du nombre de neurones dans la couche caché.
+et la précision dépend strictement du nombre de neurones dans la couche cachée.
 
 \begin{figure}[ht]
 \centering
 \includegraphics[width=12cm,height=9cm]{./pics/chartsqtest5.eps}
-\caption{Résultats apprentissage: 4 neurons, dataset 3, 30.000 itérations}
+\caption{Résultats apprentissage: 4 neurones, dataset 3, 30.000 itérations}
 \label{fig:chartsqtest5}
 \end{figure}
 
@@ -641,25 +641,25 @@ et la précision dépend strictement du nombre de neurones dans la couche caché
 \clearpage
 \section{Conclusion}
 Comme nous avons pu le constater dans la première partie de ce rapport, les
-perceptrons pouvent etre utilisés éfficacement dans la classification des données.
-En particulier un perceptron monocouche est suffisant pour déterminer une
-catagorisation entre des ensembles de données linéarement séparables.\\
+perceptrons pouvent être utilisés efficacement dans la classification des données.
+En particulier un perceptron mono-couche est suffisant pour déterminer une
+catégorisation entre des ensembles de données linéairement séparables.\\
 
-Nous avons aussi pu voir que les perceptrons pouvent aussi etre utilisés dans
+Nous avons aussi pu voir que les perceptrons pouvent aussi être utilisés dans
 le calcul et l'approximation de n'importe quelle fonction continue, ce résultat
 est résumé par le théorème de Cybenko.  Une couche avec plusieurs neurones
 comporte une capacité de stockage supérieure et permet donc une meilleure
 approximation.\\
 
 Pendant l'apprentissage on essaye de s'approcher le plus possible du minumim
-globale de la fonction d'erreur.\\
+global de la fonction d'erreur.\\
 
 Le pas d'apprentissage détermine la taille de chaque avancement pendant la
 recherche du minumim dans la fonction d'erreur.  Un grand pas d'apprentissage
-permet d'entrainer le perceptron plus rapidement mais risque de manquer le
+permet d'entraîner le perceptron plus rapidement mais risque de manquer le
 minimum global. En revanche un petit pas d'apprentissage permet de faire une
-recherche plus fine et de s'approcher plus précisement du minimum globale. Il
-risque cependant d'etre bloqué dans un minimum local.\\
+recherche plus fine et de s'approcher plus précisement du minimum global. Il
+risque cependant d'être bloqué dans un minimum local.\\
 
 
 
